@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
+import { SpaceLogo } from '../config/navigation';
 
 interface WarpFieldProps {
   active: boolean;
   progress: number; // 0 to 1
+  logo?: SpaceLogo | null;
 }
 
-export const WarpField: React.FC<WarpFieldProps> = ({ active, progress }) => {
+export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const progressRef = useRef(progress);
   progressRef.current = progress;
@@ -114,6 +116,13 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress }) => {
     };
   }, []);
 
+  // Compute zoom-in animation values for the clicked logo
+  const p = Math.max(0, Math.min(1, progress));
+  const zoomScale = 0.25 + Math.pow(p, 2.6) * 22;
+  const logoOpacity = Math.min(1, Math.max(0, p * 3));
+  const logoBrightness = 1 + p * 2.2;
+  const glowSize = 15 + p * 70;
+
   return (
     <div
       className={`fixed inset-0 pointer-events-none transition-opacity duration-300 z-20 ${
@@ -121,10 +130,30 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress }) => {
       }`}
     >
       <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none" />
-      {active && (
-        <h1 className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/15 text-5xl md:text-8xl font-orbitron tracking-[12px] md:tracking-[24px] pointer-events-none font-black animate-pulse select-none">
-          HYPERSPACE
-        </h1>
+
+      {/* Animated Zooming Logo */}
+      {active && logo && (
+        <div
+          className="fixed top-1/2 left-1/2 pointer-events-none z-30 flex flex-col items-center justify-center select-none"
+          style={{
+            transform: `translate3d(-50%, -50%, 0) scale(${zoomScale})`,
+            opacity: logoOpacity,
+            filter: `drop-shadow(0 0 ${glowSize}px ${logo.glowColor}) brightness(${logoBrightness})`,
+            willChange: 'transform, filter, opacity',
+          }}
+        >
+          <div className="p-4 md:p-6 rounded-2xl bg-slate-950/50 backdrop-blur-sm border border-white/25 shadow-2xl flex items-center justify-center">
+            <img
+              src={logo.icon}
+              alt={logo.label}
+              className="h-14 md:h-20 w-auto max-w-[200px] md:max-w-[280px] object-contain"
+              draggable={false}
+            />
+          </div>
+          <span className="mt-3 text-xs md:text-sm font-bold tracking-[0.25em] text-white/90 uppercase font-space text-glow-cyan">
+            {logo.label}
+          </span>
+        </div>
       )}
     </div>
   );

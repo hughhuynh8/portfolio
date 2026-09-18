@@ -68,6 +68,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
       <WarpField
         active={sceneState === 'warping' || sceneState === 'impact'}
         progress={warpProgress}
+        logo={selectedLogo}
       />
 
       {/* Impact and Fullscreen Flash Overlay */}
