@@ -6,7 +6,7 @@ interface SpaceLogoProps {
   sceneState: 'idle' | 'warping' | 'impact' | 'flash' | 'page';
   isSelected: boolean;
   targetLogo: SpaceLogoType | null;
-  warpProgress: number; // 0 to 1
+  warpProgress: number;
   mouseOffset: { x: number; y: number };
   onClick: (logo: SpaceLogoType) => void;
 }
@@ -14,34 +14,28 @@ interface SpaceLogoProps {
 export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   logo,
   sceneState,
-  isSelected,
-  targetLogo,
-  warpProgress,
   mouseOffset,
   onClick,
 }) => {
   // Base 3D Perspective Projection
-  // Focal length controls perspective depth
   const focalLength = 12;
   const baseScale = focalLength / (focalLength + logo.z);
 
   // Perceived distance brightness & sizing
   const baseOpacity = useMemo(() => {
-    // Closer logos are brighter, distant logos are softer/fainter
-    return Math.max(0.5, Math.min(1.0, 1.15 - (logo.z / 20)));
+    return Math.max(0.5, Math.min(1.0, 1.15 - logo.z / 20));
   }, [logo.z]);
 
-  // Transform calculation based on state and progress
   const transformStyle = useMemo(() => {
+    // Parallax effect from mouse position based on depth
+    const parallaxFactor = 1 / (1 + logo.z * 0.15);
+    const px = mouseOffset.x * parallaxFactor * 18;
+    const py = mouseOffset.y * parallaxFactor * 14;
+
+    const posX = 50 + logo.x * baseScale + px;
+    const posY = 50 + logo.y * baseScale + py;
+
     if (sceneState === 'idle') {
-      // Parallax effect from mouse position based on depth
-      const parallaxFactor = 1 / (1 + logo.z * 0.15);
-      const px = mouseOffset.x * parallaxFactor * 18;
-      const py = mouseOffset.y * parallaxFactor * 14;
-
-      const posX = 50 + logo.x * baseScale + px;
-      const posY = 50 + logo.y * baseScale + py;
-
       return {
         left: `${posX}%`,
         top: `${posY}%`,
@@ -52,75 +46,16 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       };
     }
 
-    if (sceneState === 'warping' || sceneState === 'impact') {
-      const p = Math.min(1, warpProgress);
-      // Ease exponential for dramatic warp acceleration
-      const easeP = Math.pow(p, 3.2);
-
-      if (isSelected) {
-        // Selected logo: moves toward center, rapidly approaches viewer, fills screen
-        const startX = 50 + logo.x * baseScale;
-        const startY = 50 + logo.y * baseScale;
-        
-        // Moves toward screen center (50%, 50%)
-        const curX = startX + (50 - startX) * Math.min(1, p * 1.4);
-        const curY = startY + (50 - startY) * Math.min(1, p * 1.4);
-
-        // Exponential scale up to fill screen
-        const curScale = baseScale * 1.35 * (1 + easeP * 38);
-        const curBrightness = 1 + easeP * 3.5;
-        const glowSpread = Math.min(160, 20 + easeP * 180);
-
-        return {
-          left: `${curX}%`,
-          top: `${curY}%`,
-          transform: `translate(-50%, -50%) scale(${curScale})`,
-          opacity: 1,
-          filter: `drop-shadow(0 0 ${glowSpread}px ${logo.glowColor}) brightness(${curBrightness})`,
-          zIndex: 40,
-        };
-      } else {
-        // Other logos: move away from viewpoint, shrink, stretch slightly, blur, fade to darkness
-        const targetX = targetLogo ? targetLogo.x : 0;
-        const targetY = targetLogo ? targetLogo.y : 0;
-        
-        // Direction vector away from target/center
-        const dirX = logo.x - targetX || 1;
-        const dirY = logo.y - targetY || 1;
-        const dist = Math.hypot(dirX, dirY) || 1;
-        const normX = dirX / dist;
-        const normY = dirY / dist;
-
-        const startX = 50 + logo.x * baseScale;
-        const startY = 50 + logo.y * baseScale;
-
-        // Push away outwards aggressively
-        const pushDist = easeP * 85;
-        const curX = startX + normX * pushDist;
-        const curY = startY + normY * pushDist;
-
-        // Shrink, blur, and fade
-        const curScale = Math.max(0.01, (baseScale * 1.35) * (1 - p * 0.9));
-        const curOpacity = Math.max(0, baseOpacity * (1 - p * 2.2));
-        const blurAmount = p * 12;
-
-        return {
-          left: `${curX}%`,
-          top: `${curY}%`,
-          transform: `translate(-50%, -50%) scale(${curScale})`,
-          opacity: curOpacity,
-          filter: `blur(${blurAmount}px)`,
-          pointerEvents: 'none' as const,
-        };
-      }
-    }
-
-    // Flash or page
+    // When warp animation starts, logos are completely removed/hidden from the animation
     return {
+      left: `${posX}%`,
+      top: `${posY}%`,
+      transform: `translate(-50%, -50%) scale(${baseScale * 1.35})`,
       opacity: 0,
       pointerEvents: 'none' as const,
+      transition: 'opacity 0.15s ease',
     };
-  }, [sceneState, isSelected, targetLogo, warpProgress, logo, baseScale, baseOpacity, mouseOffset]);
+  }, [sceneState, logo, baseScale, baseOpacity, mouseOffset]);
 
   if (sceneState === 'flash' || sceneState === 'page') {
     return null;
@@ -129,9 +64,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   return (
     <div
       style={transformStyle}
-      className={`absolute cursor-pointer select-none transition-shadow group flex flex-col items-center justify-center ${
-        isSelected ? 'z-30' : 'z-10'
-      }`}
+      className="absolute cursor-pointer select-none transition-shadow group flex flex-col items-center justify-center z-10"
       onClick={() => {
         if (sceneState === 'idle') {
           onClick(logo);
@@ -146,7 +79,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
         }}
       />
 
-      {/* Futuristic Target Bracket on Hover (idle state only) */}
+      {/* Futuristic Target Bracket on Hover */}
       {sceneState === 'idle' && (
         <div className="absolute -inset-3.5 border border-cyan-400/0 rounded-xl transition-all duration-300 pointer-events-none group-hover:border-cyan-400/50 group-hover:scale-105">
           <div className="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-cyan-300 opacity-0 group-hover:opacity-100" />

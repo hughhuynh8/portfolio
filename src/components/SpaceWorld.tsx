@@ -73,7 +73,11 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
       </div>
 
       {/* 8 Glowing Logos at Different 3D Distances */}
-      <div className="relative w-full h-full">
+      <div
+        className={`relative w-full h-full transition-opacity duration-200 ${
+          sceneState === 'idle' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
         {SPACE_LOGOS.map((logo) => (
           <SpaceLogo
             key={logo.id}
