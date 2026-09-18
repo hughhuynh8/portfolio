@@ -116,12 +116,10 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) 
     };
   }, []);
 
-  // Compute zoom-in animation values for the clicked logo
+  // Compute zoom-in scale for the clicked logo (no halo, no glow, just clean original image)
   const p = Math.max(0, Math.min(1, progress));
   const zoomScale = 0.25 + Math.pow(p, 2.6) * 22;
   const logoOpacity = Math.min(1, Math.max(0, p * 3));
-  const logoBrightness = 1 + p * 2.2;
-  const glowSize = 15 + p * 70;
 
   return (
     <div
@@ -131,29 +129,19 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) 
     >
       <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none" />
 
-      {/* Animated Zooming Logo */}
+      {/* Clean original logo image zooming in with no halo, glow, or styling */}
       {active && logo && (
-        <div
-          className="fixed top-1/2 left-1/2 pointer-events-none z-30 flex flex-col items-center justify-center select-none"
+        <img
+          src={logo.icon}
+          alt={logo.label}
+          className="fixed top-1/2 left-1/2 pointer-events-none z-30 select-none object-contain h-24 md:h-32 w-auto max-w-[300px] md:max-w-[420px]"
           style={{
             transform: `translate3d(-50%, -50%, 0) scale(${zoomScale})`,
             opacity: logoOpacity,
-            filter: `drop-shadow(0 0 ${glowSize}px ${logo.glowColor}) brightness(${logoBrightness})`,
-            willChange: 'transform, filter, opacity',
+            willChange: 'transform, opacity',
           }}
-        >
-          <div className="p-4 md:p-6 rounded-2xl bg-slate-950/50 backdrop-blur-sm border border-white/25 shadow-2xl flex items-center justify-center">
-            <img
-              src={logo.icon}
-              alt={logo.label}
-              className="h-14 md:h-20 w-auto max-w-[200px] md:max-w-[280px] object-contain"
-              draggable={false}
-            />
-          </div>
-          <span className="mt-3 text-xs md:text-sm font-bold tracking-[0.25em] text-white/90 uppercase font-space text-glow-cyan">
-            {logo.label}
-          </span>
-        </div>
+          draggable={false}
+        />
       )}
     </div>
   );
