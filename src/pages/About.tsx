@@ -1,0 +1,77 @@
+import React from 'react';
+import { Terminal, Code, Cpu, Award, Rocket, CheckCircle2 } from 'lucide-react';
+
+export const About: React.FC = () => {
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-12 text-slate-200">
+      {/* Header */}
+      <div className="border-b border-white/10 pb-8 mb-12">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-4">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>BIOGRAPHY & BACKGROUND</span>
+        </div>
+        <h1 className="text-3xl md:text-5xl font-bold text-white font-orbitron tracking-tight mb-4">
+          HUGH // FRONTEND ARCHITECT
+        </h1>
+        <p className="text-lg text-slate-400 font-space leading-relaxed max-w-3xl">
+          Staff Frontend Engineer & Creative Technologist specialized in designing resilient, high-performance web systems, design systems, and interactive 3D digital experiences for Australia’s top enterprises.
+        </p>
+      </div>
+
+      {/* Grid Content */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Core Principles */}
+        <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10">
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
+            <Cpu className="w-5 h-5" />
+          </div>
+          <h3 className="text-lg font-bold text-white mb-2">Systems Architecture</h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Building scalable frontend foundations, micro-frontends, design systems, and component ecosystems that empower multi-squad development.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+            <Code className="w-5 h-5" />
+          </div>
+          <h3 className="text-lg font-bold text-white mb-2">High-Velocity UI</h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Obsessive focus on Core Web Vitals, sub-second LCP, predictive search, and frictionless booking & checkout flows for millions of concurrent users.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10">
+          <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <Rocket className="w-5 h-5" />
+          </div>
+          <h3 className="text-lg font-bold text-white mb-2">Creative Technology</h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Bridging engineering and creative artistry with WebGL, Three.js, Canvas APIs, and sensory motion design that captivates audiences.
+          </p>
+        </div>
+      </div>
+
+      {/* Experience Highlights */}
+      <div className="rounded-2xl bg-slate-900/40 border border-white/10 p-8">
+        <h2 className="text-xl font-bold text-white font-orbitron mb-6 flex items-center gap-2.5">
+          <Award className="w-5 h-5 text-cyan-400" />
+          <span>CAREER HIGHLIGHTS & CAPABILITIES</span>
+        </h2>
+        <div className="space-y-4">
+          {[
+            'Over 10+ years engineering enterprise web applications for Qantas, Jetstar, Officeworks, Repco, Autobarn, and more.',
+            'Specialist in React, TypeScript, Next.js, WebGL, Tailwind, state management, and modern bundler optimization.',
+            'Proven track record scaling mission-critical platforms handling billions of dollars in gross merchandise value.',
+            'Deep expertise in design systems, strict accessibility (WCAG AA), and automated end-to-end testing pipelines.'
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+              <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
