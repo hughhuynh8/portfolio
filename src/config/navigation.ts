@@ -1,3 +1,6 @@
+import gucciLogo from '../../assets/logos/gucci_logo.svg';
+import sapLogo from '../../assets/logos/sap_logo.svg';
+
 export interface SpaceLogo {
   id: string;
   label: string;
@@ -8,6 +11,7 @@ export interface SpaceLogo {
   z: number;
   color: string;
   glowColor: string;
+  backgroundColor: string;
   role: string;
   period: string;
   headline: string;
@@ -30,6 +34,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     z: 4.5,
     color: '#002f87',
     glowColor: 'rgba(0, 85, 255, 0.45)',
+    backgroundColor: '#001E7E',
     role: 'Lead Frontend Engineer & Architect',
     period: '2023 — 2024',
     headline: 'High-Volume Enterprise E-Commerce & Design System Architecture',
@@ -61,6 +66,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     z: 5.5,
     color: '#d6001c',
     glowColor: 'rgba(239, 68, 68, 0.45)',
+    backgroundColor: '#ffffff',
     role: 'Senior Frontend Engineer',
     period: '2023',
     headline: 'Automotive Parts Trade Portal & Dynamic Rego Search Engine',
@@ -92,6 +98,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     z: 6.8,
     color: '#e40000',
     glowColor: 'rgba(228, 0, 0, 0.45)',
+    backgroundColor: '#ffffff',
     role: 'Staff Frontend Engineer & UI Specialist',
     period: '2022 — 2023',
     headline: 'Flagship Airline Digital Booking & Hotels Experience',
@@ -123,6 +130,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     z: 8.5,
     color: '#ffffff',
     glowColor: 'rgba(255, 255, 255, 0.45)',
+    backgroundColor: '#ffffff',
     role: 'Frontend & Creative Technologist',
     period: '2022',
     headline: 'Next-Generation Paper Tablet Web Companion & Canvas Engine',
@@ -145,15 +153,16 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     ]
   },
   {
-    id: 'autobarn',
-    label: 'AUTOBARN',
-    client: 'Autobarn',
-    icon: '/assets/logos/autobarn_logo.png',
+    id: 'sap',
+    label: 'SAP',
+    client: 'SAP',
+    icon: sapLogo,
     x: 16,
     y: -26,
     z: 9.8,
     color: '#0284c7',
     glowColor: 'rgba(14, 165, 233, 0.45)',
+    backgroundColor: '#ffffff',
     role: 'Senior Web Developer',
     period: '2021 — 2022',
     headline: 'Automotive Accessories & In-Car Entertainment E-Commerce',
@@ -176,15 +185,16 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     ]
   },
   {
-    id: 'jetstar',
-    label: 'JETSTAR',
-    client: 'Jetstar Airways',
-    icon: '/assets/logos/jetstar_logo.png',
+    id: 'gucci',
+    label: 'GUCCI',
+    client: 'Gucci',
+    icon: gucciLogo,
     x: 26,
     y: -16,
     z: 11.5,
-    color: '#ff6600',
-    glowColor: 'rgba(249, 115, 22, 0.45)',
+    color: '#0A6A56',
+    glowColor: '#BD9302',
+    backgroundColor: '#000000',
     role: 'Lead Mobile Web & UI Engineer',
     period: '2021',
     headline: 'Low-Cost Carrier Fare Matrix & High-Velocity Booking Flow',
@@ -217,6 +227,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     z: 14.0,
     color: '#38bdf8',
     glowColor: 'rgba(56, 189, 248, 0.45)',
+    backgroundColor: '#000000',
     role: 'Interactive Web Developer',
     period: '2020 — 2021',
     headline: 'Immersive Real-Time Venue Booking & Social Entertainment Portal',
@@ -247,7 +258,8 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     y: -30,
     z: 16.5,
     color: '#ec4899',
-    glowColor: 'rgba(236, 72, 153, 0.45)',
+    glowColor: '#2c4390',
+    backgroundColor: '#2c4390',
     role: 'Senior Frontend Developer',
     period: '2020',
     headline: 'Creative Craft, Fabric & Home Decor Omnichannel Store',

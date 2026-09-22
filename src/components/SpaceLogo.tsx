@@ -83,11 +83,14 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       )}
 
       {/* Emblem Container */}
-      <div className="relative flex items-center justify-center p-3 rounded-xl bg-slate-950/40 backdrop-blur-sm border border-white/15 transition-all duration-300 group-hover:border-cyan-300/80 group-hover:bg-slate-900/60 shadow-lg">
+      <div
+        className="relative flex items-center justify-center p-3 rounded-xl backdrop-blur-sm border border-white/15 transition-all duration-300 group-hover:border-cyan-300/80 shadow-lg"
+        style={{ backgroundColor: logo.backgroundColor }}
+      >
         <img
           src={logo.icon}
           alt={logo.label}
-          className="h-9 md:h-12 w-auto max-w-[130px] md:max-w-[160px] object-contain filter drop-shadow transition-transform duration-300 group-hover:scale-110"
+          className="h-9 md:h-12 w-auto max-w-[130px] md:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
           draggable={false}
         />
       </div>
