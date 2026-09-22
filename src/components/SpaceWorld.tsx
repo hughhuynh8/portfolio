@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SpaceLogo as SpaceLogoType, SPACE_LOGOS } from '../config/navigation';
 import { SpaceLogo } from './SpaceLogo';
 
@@ -15,22 +15,6 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
   warpProgress,
   onLogoClick,
 }) => {
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-
-  // Mouse move parallax in idle mode
-  useEffect(() => {
-    if (sceneState !== 'idle') return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMouseOffset({ x: nx, y: ny });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [sceneState]);
-
   // Background transformation during warp
   const bgTransform = React.useMemo(() => {
     if (sceneState === 'warping' || sceneState === 'impact') {
@@ -38,11 +22,8 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
       const scale = 1 + Math.pow(p, 2.5) * 3.2;
       return `scale(${scale})`;
     }
-    // Subtle breathing float in idle
-    const mx = mouseOffset.x * 12;
-    const my = mouseOffset.y * 12;
-    return `translate(${mx}px, ${my}px) scale(1.05)`;
-  }, [sceneState, warpProgress, mouseOffset]);
+    return 'scale(1.05)';
+  }, [sceneState, warpProgress]);
 
   if (sceneState === 'flash' || sceneState === 'page') {
     return null;
@@ -86,7 +67,6 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
             isSelected={selectedLogo?.id === logo.id}
             targetLogo={selectedLogo}
             warpProgress={warpProgress}
-            mouseOffset={mouseOffset}
             onClick={onLogoClick}
           />
         ))}

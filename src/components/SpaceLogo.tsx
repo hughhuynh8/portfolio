@@ -7,14 +7,12 @@ interface SpaceLogoProps {
   isSelected: boolean;
   targetLogo: SpaceLogoType | null;
   warpProgress: number;
-  mouseOffset: { x: number; y: number };
   onClick: (logo: SpaceLogoType) => void;
 }
 
 export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   logo,
   sceneState,
-  mouseOffset,
   onClick,
 }) => {
   // Base 3D Perspective Projection
@@ -27,13 +25,8 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   }, [logo.z]);
 
   const transformStyle = useMemo(() => {
-    // Parallax effect from mouse position based on depth
-    const parallaxFactor = 1 / (1 + logo.z * 0.15);
-    const px = mouseOffset.x * parallaxFactor * 18;
-    const py = mouseOffset.y * parallaxFactor * 14;
-
-    const posX = 50 + logo.x * baseScale + px;
-    const posY = 50 + logo.y * baseScale + py;
+    const posX = 50 + logo.x * baseScale;
+    const posY = 50 + logo.y * baseScale;
 
     if (sceneState === 'idle') {
       return {
@@ -55,7 +48,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       pointerEvents: 'none' as const,
       transition: 'opacity 0.15s ease',
     };
-  }, [sceneState, logo, baseScale, baseOpacity, mouseOffset]);
+  }, [sceneState, logo, baseScale, baseOpacity]);
 
   if (sceneState === 'flash' || sceneState === 'page') {
     return null;
