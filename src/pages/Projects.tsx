@@ -24,19 +24,21 @@ export const Projects: React.FC<ProjectsPageProps> = ({ onSelectLogo }) => {
 
       <div className="space-y-6">
         {SPACE_LOGOS.map((logo) => (
-          <div
+          <button
+            type="button"
             key={logo.id}
             onClick={() => onSelectLogo(logo)}
-            className="group cursor-pointer rounded-2xl bg-slate-900/60 border border-white/10 hover:border-cyan-400/50 p-6 md:p-8 transition-all duration-300 hover:bg-slate-900/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            className="group cursor-pointer rounded-2xl bg-slate-900/60 border border-white/10 hover:border-cyan-400/50 p-6 md:p-8 text-left transition-all duration-300 hover:bg-slate-900/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+            aria-label={`View ${logo.client} case study`}
           >
             <div className="flex items-center gap-6">
               <div className="w-24 h-16 shrink-0 flex items-center justify-center p-3 rounded-xl bg-slate-950/60 border border-white/10 group-hover:border-cyan-400/40">
-                <img src={logo.icon} alt={logo.label} className="max-h-10 max-w-full object-contain" />
+                <img src={logo.icon} alt="" className="max-h-10 max-w-full object-contain" />
               </div>
               <div>
                 <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 mb-1">
                   <span>{logo.label}</span>
-                  <span className="text-slate-500">•</span>
+                  <span className="text-slate-400">•</span>
                   <span>{logo.period}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">
@@ -52,7 +54,7 @@ export const Projects: React.FC<ProjectsPageProps> = ({ onSelectLogo }) => {
               <span>View Case Study</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>

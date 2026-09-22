@@ -52,6 +52,7 @@ export const Contact: React.FC = () => {
               href="https://github.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="Visit GitHub (opens in a new tab)"
               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono text-sm border border-white/10 transition-all"
             >
               <Github className="w-4 h-4" />
@@ -61,6 +62,7 @@ export const Contact: React.FC = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="Visit LinkedIn (opens in a new tab)"
               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono text-sm border border-white/10 transition-all"
             >
               <Linkedin className="w-4 h-4" />

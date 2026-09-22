@@ -127,13 +127,13 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) 
         active ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none" />
+      <canvas ref={canvasRef} aria-hidden="true" className="fixed inset-0 pointer-events-none" />
 
       {/* Clean original logo image zooming in with no halo, glow, or styling */}
       {active && logo && (
         <img
           src={logo.icon}
-          alt={logo.label}
+          alt=""
           className="fixed top-1/2 left-1/2 pointer-events-none z-30 select-none object-contain h-24 md:h-32 w-auto max-w-[300px] md:max-w-[420px]"
           style={{
             transform: `translate3d(-50%, -50%, 0) scale(${zoomScale})`,

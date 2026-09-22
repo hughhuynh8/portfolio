@@ -34,14 +34,16 @@ export const Home: React.FC<HomePageProps> = ({ onSelectLogo, onReturnToSpace })
       {/* Grid of Available Destinations */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {SPACE_LOGOS.map((logo) => (
-          <div
+          <button
+            type="button"
             key={logo.id}
             onClick={() => onSelectLogo(logo)}
-            className="group cursor-pointer rounded-2xl bg-slate-900/60 border border-white/10 hover:border-cyan-400/50 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(56,189,248,0.2)] flex flex-col justify-between"
+            className="group cursor-pointer rounded-2xl bg-slate-900/60 border border-white/10 hover:border-cyan-400/50 p-6 text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(56,189,248,0.2)] flex flex-col justify-between"
+            aria-label={`View ${logo.client} case study`}
           >
             <div>
               <div className="h-16 flex items-center justify-center p-2 mb-4 bg-slate-950/40 rounded-xl border border-white/5 group-hover:border-cyan-400/30">
-                <img src={logo.icon} alt={logo.label} className="max-h-12 max-w-[120px] object-contain" />
+                <img src={logo.icon} alt="" className="max-h-12 max-w-[120px] object-contain" />
               </div>
               <div className="flex items-center justify-between text-xs font-mono text-cyan-400 mb-2">
                 <span>{logo.label}</span>
@@ -58,7 +60,7 @@ export const Home: React.FC<HomePageProps> = ({ onSelectLogo, onReturnToSpace })
               <span>Warp to Case Study</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>

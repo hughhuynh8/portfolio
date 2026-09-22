@@ -55,9 +55,12 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   }
 
   return (
-    <div
+    <button
+      type="button"
       style={transformStyle}
-      className="absolute cursor-pointer select-none transition-shadow group flex flex-col items-center justify-center z-10"
+      className="absolute cursor-pointer select-none border-0 bg-transparent p-0 transition-shadow group flex flex-col items-center justify-center z-10"
+      aria-label={`View ${logo.client} case study`}
+      disabled={sceneState !== 'idle'}
       onClick={() => {
         if (sceneState === 'idle') {
           onClick(logo);
@@ -89,7 +92,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       >
         <img
           src={logo.icon}
-          alt={logo.label}
+          alt=""
           className="h-9 md:h-12 w-auto max-w-[130px] md:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
           draggable={false}
         />
@@ -104,10 +107,10 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
         <span className="text-[11px] md:text-xs font-semibold tracking-widest text-slate-200 uppercase font-space group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
           {logo.label}
         </span>
-        <span className="text-[9px] text-slate-400/80 font-mono tracking-wider">
+        <span className="text-[9px] text-slate-300 font-mono tracking-wider">
           {logo.z.toFixed(1)} AU
         </span>
       </div>
-    </div>
+    </button>
   );
 };

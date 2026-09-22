@@ -55,7 +55,8 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
   }, [sceneState, onTransitionComplete]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#010817]">
+    <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#010817]">
+      <h1 className="sr-only">Hugh's portfolio destinations</h1>
       {/* 3D Space World with 8 Glowing Logos */}
       <SpaceWorld
         sceneState={sceneState}
@@ -96,7 +97,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
                 <Compass className="w-3.5 h-3.5 text-cyan-400" />
                 8 TARGETS ACQUIRED
               </span>
-              <span className="hidden md:inline text-slate-500">|</span>
+              <span className="hidden md:inline text-slate-400">|</span>
               <span className="hidden md:flex items-center gap-1 text-slate-300">
                 VELOCITY: 0.00c
               </span>
@@ -107,9 +108,9 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
           <footer className="fixed bottom-6 left-0 right-0 flex flex-col items-center justify-center pointer-events-none z-30 text-center px-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-cyan-500/20 text-slate-300 text-xs tracking-wide shadow-2xl">
               <Navigation className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              <span>Click any destination in deep space to engage warp drive</span>
+              <span>Select a destination, then press Enter or Space to engage warp drive</span>
             </div>
-            <p className="text-[10px] text-slate-500 font-mono mt-2 tracking-widest">
+            <p className="text-[10px] text-slate-300 font-mono mt-2 tracking-widest">
               CAMERA = VIEWER // 3D SPACE PROJECTION
             </p>
           </footer>
@@ -125,6 +126,6 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 };

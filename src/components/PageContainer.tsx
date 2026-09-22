@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { SpaceLogo, SPACE_LOGOS, GENERAL_PAGES } from '../config/navigation';
 import { Home } from '../pages/Home';
 import { About } from '../pages/About';
@@ -34,8 +34,15 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   onSelectLogo,
   onSelectGeneralPage,
 }) => {
+  const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    mainRef.current?.focus();
+  }, [selectedLogo, activeGeneralPage]);
+
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-[#010817] text-slate-200 animate-fade-in select-text">
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       {/* Top Navigation HUD */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#010817]/80 border-b border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -49,11 +56,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
           </button>
 
           {/* Quick Category Nav Pills */}
-          <nav className="flex items-center gap-1.5 overflow-x-auto py-1">
+          <nav aria-label="Portfolio sections" className="flex items-center gap-1.5 overflow-x-auto py-1">
             {GENERAL_PAGES.map((page) => (
               <button
                 key={page.id}
                 onClick={() => onSelectGeneralPage(page.id)}
+                aria-current={activeGeneralPage === page.id && !selectedLogo ? 'page' : undefined}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all whitespace-nowrap ${
                   activeGeneralPage === page.id && !selectedLogo
                     ? 'bg-white/15 text-white border border-white/30'
@@ -67,8 +75,8 @@ export const PageContainer: React.FC<PageContainerProps> = ({
         </div>
 
         {/* 8 Logo Quick Jumper Bar */}
-        <div className="max-w-7xl mx-auto pt-3 flex items-center gap-2 overflow-x-auto scrollbar-none">
-          <span className="text-[10px] font-mono text-cyan-400/70 whitespace-nowrap mr-1 flex items-center gap-1">
+        <nav aria-label="Case studies" className="max-w-7xl mx-auto pt-3 flex items-center gap-2 overflow-x-auto scrollbar-none">
+          <span className="text-[10px] font-mono text-cyan-300 whitespace-nowrap mr-1 flex items-center gap-1">
             <Compass className="w-3 h-3 text-cyan-400" />
             SECTORS:
           </span>
@@ -76,6 +84,8 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <button
               key={logo.id}
               onClick={() => onSelectLogo(logo)}
+              aria-label={`View ${logo.client} case study`}
+              aria-current={selectedLogo?.id === logo.id ? 'page' : undefined}
               className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${
                 selectedLogo?.id === logo.id
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
@@ -86,11 +96,11 @@ export const PageContainer: React.FC<PageContainerProps> = ({
               <span>{logo.label}</span>
             </button>
           ))}
-        </div>
+        </nav>
       </header>
 
       {/* Main Content Area */}
-      <main className="min-h-[calc(100vh-120px)] py-8">
+      <main id="main-content" ref={mainRef} tabIndex={-1} className="min-h-[calc(100vh-120px)] py-8">
         {selectedLogo ? (
           /* Render Selected Client Case Study */
           <div className="max-w-5xl mx-auto px-6 py-6">
@@ -117,7 +127,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                         {selectedLogo.role}
                       </span>
                       <span>{selectedLogo.period}</span>
-                      <span className="text-slate-500">•</span>
+                      <span className="text-slate-400">•</span>
                       <span>DISTANCE: {selectedLogo.z} AU</span>
                     </div>
                     <h1 className="text-3xl md:text-5xl font-extrabold text-white font-orbitron tracking-tight">
