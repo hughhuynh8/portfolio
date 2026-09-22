@@ -14,7 +14,7 @@ export const About: React.FC = () => {
           HUGH // FRONTEND ARCHITECT
         </h1>
         <p className="text-lg text-slate-400 font-space leading-relaxed max-w-3xl">
-          Staff Frontend Engineer & Creative Technologist specialized in designing resilient, high-performance web systems, design systems, and interactive 3D digital experiences for Australia’s top enterprises.
+          Staff Frontend Engineer & Creative Technologist specialized in designing resilient, high-performance web systems, design systems, and interactive digital experiences for global enterprises.
         </p>
       </div>
 

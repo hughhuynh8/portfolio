@@ -1,5 +1,13 @@
 import gucciLogo from '../../assets/logos/gucci_logo.svg';
 import sapLogo from '../../assets/logos/sap_logo.svg';
+import qantasScreenshot from '../../assets/screenshots/qantas.png';
+import spotlightScreenshot from '../../assets/screenshots/spotlight.png';
+import sapScreenshot from '../../assets/screenshots/sap.png';
+import gucciScreenshot from '../../assets/screenshots/gucci.png';
+import repcoScreenshot from '../../assets/screenshots/repco.png';
+import strikeScreenshot from '../../assets/screenshots/strike.png';
+import officeworksScreenshot from '../../assets/screenshots/Officeworks.png';
+import remarkableScreenshot from '../../assets/screenshots/remarkable.png';
 
 export interface SpaceLogo {
   id: string;
@@ -17,21 +25,22 @@ export interface SpaceLogo {
   headline: string;
   summary: string;
   heroImage?: string;
+  websiteUrl?: string;
   techStack: string[];
   achievements: string[];
   keyFeatures: { title: string; desc: string }[];
   metrics: { label: string; value: string }[];
 }
 
-export const SPACE_LOGOS: SpaceLogo[] = [
+const ALL_SPACE_LOGOS: SpaceLogo[] = [
   {
     id: 'officeworks',
     label: 'OFFICEWORKS',
     client: 'Officeworks',
     icon: '/assets/logos/officeworks_logo.svg',
     x: -18,
-    y: 20,
-    z: 4.5,
+    y: 30,
+    z: 7,
     color: '#002f87',
     glowColor: 'rgba(0, 85, 255, 0.45)',
     backgroundColor: '#001E7E',
@@ -61,7 +70,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     label: 'REPCO',
     client: 'Repco Australia & NZ',
     icon: '/assets/logos/repco_logo.png',
-    x: 32,
+    x: 27,
     y: 6,
     z: 5.5,
     color: '#d6001c',
@@ -125,7 +134,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     label: 'REMARKABLE',
     client: 'reMarkable',
     icon: '/assets/logos/remarkable_logo.svg',
-    x: -34,
+    x: -50,
     y: 8,
     z: 8.5,
     color: '#ffffff',
@@ -189,11 +198,11 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     label: 'GUCCI',
     client: 'Gucci',
     icon: gucciLogo,
-    x: 26,
+    x: 36,
     y: -16,
-    z: 11.5,
+    z: 3.5,
     color: '#0A6A56',
-    glowColor: '#BD9302',
+    glowColor: 'rgba(189, 148, 2, 0.29)',
     backgroundColor: '#000000',
     role: 'Lead Mobile Web & UI Engineer',
     period: '2021',
@@ -222,7 +231,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     label: 'STRIKE',
     client: 'Strike Bowling & Funlab',
     icon: '/assets/logos/strike_logo.svg',
-    x: 32,
+    x: 16,
     y: 22,
     z: 14.0,
     color: '#38bdf8',
@@ -283,19 +292,152 @@ export const SPACE_LOGOS: SpaceLogo[] = [
   }
 ];
 
-export interface PageMetadata {
-  id: string;
-  title: string;
-  subtitle: string;
-}
+const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
+  qantas: {
+    client: 'Qantas Holidays',
+    role: 'Senior Software Engineer',
+    period: 'Jan 2023 — Mar 2026',
+    websiteUrl: 'https://www.qantas.com/holidays',
+    heroImage: qantasScreenshot,
+    headline: 'Qantas Holidays: high-traffic travel booking experiences',
+    summary: 'Developed and maintained the Qantas Holidays application, supporting a product used by millions of visitors per day and resolving production issues across the booking experience.',
+    techStack: ['Next.js', 'React', 'Buildkite', 'Sanity', 'Contentful', 'AWS'],
+    achievements: ['Developed and updated a high-traffic travel application.', 'Resolved production support issues across the customer experience.', 'Maintained the platform during Jetstar’s largest sale of the year, which generated $6M in revenue.'],
+    keyFeatures: [
+      { title: 'Travel booking platform', desc: 'Ongoing development and maintenance for the Qantas Holidays web experience.' },
+      { title: 'Content platforms', desc: 'Worked with Sanity and Contentful to support managed site content.' },
+      { title: 'Production support', desc: 'Diagnosed and resolved live issues for a heavily used customer application.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '3+ yrs' }, { label: 'Daily audience', value: 'Millions' }, { label: 'Major sale revenue', value: '$6M' }],
+  },
+  remarkable: {
+    client: 'Remarkable Furniture',
+    role: 'Technical Lead',
+    period: 'Jul 2022 — Nov 2022',
+    websiteUrl: 'https://www.remarkablefurniture.com.au/',
+    heroImage: remarkableScreenshot,
+    headline: 'SEO- and performance-focused Shopify Plus commerce',
+    summary: 'Led development and updates for Shopify e-commerce stores, managing a team of four while delivering performance- and SEO-focused retail solutions.',
+    techStack: ['Shopify', 'React', 'Gatsby', 'Netlify', 'Tailwind CSS', 'Google Cloud', 'GraphQL'],
+    achievements: ['Led and managed a team of four.', 'Developed and updated Shopify e-commerce stores for major retailers.', 'Delivered SEO- and performance-optimised Shopify Plus solutions.'],
+    keyFeatures: [
+      { title: 'Shopify Plus delivery', desc: 'Built and maintained ecommerce experiences on Shopify.' },
+      { title: 'Technical leadership', desc: 'Coordinated a four-person delivery team.' },
+      { title: 'Performance and SEO', desc: 'Prioritised discoverability and fast retail experiences.' },
+    ],
+    metrics: [{ label: 'Role', value: 'Tech Lead' }, { label: 'Team managed', value: '4' }, { label: 'Tenure', value: '5 mos' }],
+  },
+  repco: {
+    client: 'Repco',
+    role: 'Senior Front End Developer',
+    period: 'Jan 2018 — Jul 2022',
+    websiteUrl: 'https://www.repco.com.au/',
+    heroImage: repcoScreenshot,
+    headline: 'Hybris e-commerce development for automotive parts retail',
+    summary: 'Completed the initial build of Repco’s Hybris site, then delivered requested features and performance improvements for the ecommerce experience.',
+    techStack: ['HTML', 'LESS', 'Bootstrap 3', 'JavaScript', 'Grunt', 'SAP Hybris'],
+    achievements: ['Completed the initial build of Repco’s Hybris site.', 'Implemented client-requested ecommerce features.', 'Delivered performance enhancements to improve website speed.'],
+    keyFeatures: [
+      { title: 'Hybris storefront', desc: 'Developed the ecommerce website foundation.' },
+      { title: 'Performance work', desc: 'Implemented website-speed improvements.' },
+      { title: 'Feature delivery', desc: 'Added functionality in response to client requirements.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '4+ yrs' }, { label: 'Platform', value: 'Hybris' }, { label: 'Focus', value: 'Performance' }],
+  },
+  spotlight: {
+    client: 'Spotlight',
+    role: 'Senior Front End Developer',
+    period: 'Jan 2018 — Jul 2022',
+    websiteUrl: 'https://www.spotlightstores.com/',
+    heroImage: spotlightScreenshot,
+    headline: 'Craft and homewares commerce at national retail scale',
+    summary: 'Developed a craft and homewares ecommerce solution and supported its launch across more than one hundred stores and ten million products.',
+    techStack: ['HTML', 'Sass', 'Bootstrap 4', 'Angular 6', 'Grunt', 'SAP Hybris'],
+    achievements: ['Developed the craft and homewares ecommerce solution.', 'Deployed in time for September launch sales.', 'Supported a rollout spanning 100+ stores and 10M products.'],
+    keyFeatures: [
+      { title: 'E-commerce delivery', desc: 'Developed retail web experiences for craft and homewares.' },
+      { title: 'Angular frontend', desc: 'Worked with Angular 6, Sass and Bootstrap 4.' },
+      { title: 'Large-scale launch', desc: 'Supported a high-volume national retail rollout.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '4+ yrs' }, { label: 'Stores', value: '100+' }, { label: 'Products', value: '10M' }],
+  },
+  strike: {
+    client: 'Strike Bowling',
+    role: 'Senior Front End Developer',
+    period: 'May 2017 — Nov 2017',
+    websiteUrl: 'https://www.strikebowling.com.au/',
+    heroImage: strikeScreenshot,
+    headline: 'Shared booking-commerce platform for entertainment venues',
+    summary: 'Developed booking-capable ecommerce websites with a distributed team, using a shared template and CSS theming across three Funlab brands.',
+    techStack: ['HTML', 'PostCSS', 'Vue.js', 'JavaScript', 'Gulp', 'Sitecore'],
+    achievements: ['Developed three websites with a shared template and CSS theme system.', 'Built booking-capable ecommerce experiences.', 'Coordinated delivery with a team in Ukraine.'],
+    keyFeatures: [
+      { title: 'Shared template', desc: 'Created a reusable foundation across three entertainment brands.' },
+      { title: 'Booking experiences', desc: 'Delivered ecommerce websites with booking capability.' },
+      { title: 'Distributed delivery', desc: 'Coordinated closely with an overseas development team.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '7 mos' }, { label: 'Brand sites', value: '3' }, { label: 'Platform', value: 'Sitecore' }],
+  },
+  sap: {
+    client: 'SAP Commerce',
+    role: 'Lead Front End Designer/Developer',
+    period: 'Nov 2015 — Aug 2016',
+    websiteUrl: 'https://help.sap.com/docs/SAP_COMMERCE/4c33bf189ab9409e84e589295c36d96e/258b5c5265074cc2961eaacd5054140d.html',
+    heroImage: sapScreenshot,
+    headline: 'Travel Accelerator customisation for SAP Commerce',
+    summary: 'Developed and customised a travel product for SAP/Hybris, while architecting team-wide JavaScript and AA accessibility-standard frontend code.',
+    techStack: ['SAP Commerce', 'SAP Hybris', 'JavaScript', 'HTML', 'CSS', 'Web Accessibility'],
+    achievements: ['Architected and managed JavaScript practices for the delivery team.', 'Developed AA web-accessibility-standard frontend code.', 'Launched in June 2016; the product was sold to EasyJet, P&O and other travel companies.'],
+    keyFeatures: [
+      { title: 'Travel Accelerator', desc: 'Customised SAP Commerce travel functionality.' },
+      { title: 'Frontend architecture', desc: 'Set JavaScript direction for the broader delivery team.' },
+      { title: 'Accessible frontend', desc: 'Implemented AA accessibility-standard frontend code.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '10 mos' }, { label: 'Launch', value: 'Jun 2016' }, { label: 'Standard', value: 'WCAG AA' }],
+  },
+  gucci: {
+    client: 'Gucci',
+    role: 'Senior Front End Developer',
+    period: 'Jun 2015 — Sep 2015',
+    websiteUrl: 'https://www.gucci.com/',
+    heroImage: gucciScreenshot,
+    headline: 'Rich-media, localised global fashion e-commerce',
+    summary: 'Developed a dynamic e-commerce website for Gucci, combining rich media, localisation, maps and Hybris integration to meet the brand’s detailed design requirements.',
+    techStack: ['HTML5', 'LESS', 'JavaScript', 'Grunt', 'RequireJS', 'AJAX', 'Google Maps', 'SAP Hybris'],
+    achievements: ['Implemented a dynamic, rich-media ecommerce website.', 'Delivered localisation and Google Maps functionality.', 'Relaunched the site in line with Gucci’s strict design guidelines.'],
+    keyFeatures: [
+      { title: 'Rich media commerce', desc: 'Built dynamic HTML5 and JavaScript experiences.' },
+      { title: 'Localisation', desc: 'Supported an international retail experience.' },
+      { title: 'Hybris integration', desc: 'Delivered within the Hybris ecommerce stack.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '4 mos' }, { label: 'Stores', value: '278' }, { label: 'Platform', value: 'Hybris' }],
+  },
+  officeworks: {
+    client: 'Officeworks Superstores',
+    role: 'Front End Designer/Developer',
+    period: 'Jan 2013 — Nov 2014',
+    websiteUrl: 'https://www.officeworks.com.au/',
+    heroImage: officeworksScreenshot,
+    headline: 'Responsive retail campaigns for a high-volume office-supplies website',
+    summary: 'Designed and developed responsive landing pages across devices, working with major brand stakeholders and supporting a large Australian retail website.',
+    techStack: ['Joomla', 'WebSphere Commerce', 'Mailchimp', 'HTML5', 'LESS', 'EDM', 'Photoshop', 'Bootstrap', 'Handlebars', 'AJAX', 'jQuery'],
+    achievements: ['Designed and developed responsive landing pages for multiple devices.', 'Interviewed and managed a team of two developers.', 'Supported a site with 50,000 daily visitors and $1.1B annual sales.'],
+    keyFeatures: [
+      { title: 'Responsive campaigns', desc: 'Designed and developed device-responsive retail landing pages.' },
+      { title: 'Stakeholder delivery', desc: 'Liaised with Apple, Samsung, MYOB and SanDisk stakeholders.' },
+      { title: 'Commerce ecosystem', desc: 'Worked across WebSphere Commerce, Joomla and campaign tooling.' },
+    ],
+    metrics: [{ label: 'Tenure', value: '2 yrs' }, { label: 'Daily visitors', value: '50K' }, { label: 'Annual sales', value: '$1.1B' }],
+  },
+};
 
-export const GENERAL_PAGES: PageMetadata[] = [
-  { id: 'home', title: 'Deep Space', subtitle: 'Interactive 3D Portfolio Universe' },
-  { id: 'about', title: 'About Hugh', subtitle: 'Staff Frontend Engineer & Creative Technologist' },
-  { id: 'projects', title: 'Featured Projects', subtitle: 'Enterprise Web Applications & Design Systems' },
-  { id: 'art', title: 'Creative Engineering', subtitle: 'WebGL, Canvas & Generative Graphics' },
-  { id: 'music', title: 'Audio & Rhythm', subtitle: 'Interactive Soundscapes & Synthesizers' },
-  { id: 'photography', title: 'Visual Explorations', subtitle: 'Astrophotography & Urban Architecture' },
-  { id: 'travel', title: 'Expeditions', subtitle: 'Global Journeys & Aviation Logs' },
-  { id: 'contact', title: 'Transmission & Contact', subtitle: 'Establish Secure Communication' },
-];
+export const SPACE_LOGOS: SpaceLogo[] = [
+  ALL_SPACE_LOGOS[2], // Qantas
+  ALL_SPACE_LOGOS[7], // Spotlight
+  ALL_SPACE_LOGOS[4], // SAP
+  ALL_SPACE_LOGOS[5], // Gucci
+  ALL_SPACE_LOGOS[1], // Repco
+  ALL_SPACE_LOGOS[6], // Strike
+  ALL_SPACE_LOGOS[0], // Officeworks
+  ALL_SPACE_LOGOS[3], // reMarkable
+].map((logo) => ({ ...logo, ...RESUME_DETAILS[logo.id] }));

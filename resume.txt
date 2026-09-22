@@ -1,0 +1,57 @@
+Qantas Holidays (https://www.qantas.com/holidays): Jan 2023 – Mar 2026
+ROLE: Senior Software Engineer
+•	Develop and update app with millions of users per day
+•	Fix prod support issues
+•	Develop using NextJS, React, Buildkite, Sanity, Contentful, AWS
+Maintained website during Jetstar’s biggest sale of the year making $6M in revenue
+
+
+Remarkable Furniture (https://www.remarkablefurniture.com.au/): Jul 2022 – Nov 2022
+ROLE: Technical Lead
+•	Developed and updated Shopify e-commerce stores for several major retailers
+•	Lead and managed team of four
+•	Developed using Shopify, React, Gatsby, Netlify, Tailwind, Google Cloud, GraphQL
+Delivering SEO and performance optimised Shopify Plus solutions 
+
+
+Repco (http://repco.com.au/): Jan 2018 – Jul 2022
+ROLE: Senior Front End Developer	
+•	Developed Repco’s e-commerce website
+•	Added performance enhancements to improve website speed
+•	Used HTML, LESS, Bootstrap 3, Javascript, Grunt and Hybris
+Completed initial build for Repco’s Hybris site and added features as per client’s requests
+
+Spotlight (https://www.spotlightstores.com/): Jan 2018 – Jul 2022
+ROLE: Senior Front End Developer
+•	Developed craft and homewares e-commerce solution for company
+•	Developed using HTML, SASS, Bootstrap 4, Angular 6, Grunt and Hybris
+Successfully deployed website in time for the September launch sales in over one hundred stores and for ten million products
+
+
+Strike Bowling (https://www.strikebowling.com.au/): May 2017 – Nov 2017
+ROLE: Senior Front End Developer
+•	Developed company e-commerce websites with booking capabilities
+•	Coordinated with team in the Ukraine on HTML, PostCSS, VUE JS, Javascript, Gulp and Sitecore
+Developed 3 websites (https://www.strikebowling.com.au/, https://www.holeymoley.com.au/, https://www.skyzone.com.au/) using a single template and CSS theming
+
+
+Travel Accelerator, SAP Commerce (https://help.sap.com/docs/SAP_COMMERCE/4c33bf189ab9409e84e589295c36d96e/258b5c5265074cc2961eaacd5054140d.html): Nov 2015 – Aug 2016
+ROLE: Lead Front End Designer/Developer	
+•	Developed and customised travel product for SAP/Hybris
+•	Architect and managed Javascript for the entire team whilst developing AA Web Accessibility Standard Front-end code
+Successfully launched in June 2016 and sold to EasyJet, P&O and other major travel corporations
+
+
+Gucci, Company Website (http://www.gucci.com/): Jun 2015 – Sep 2015
+ROLE: Senior Front End Developer	
+•	Developed website for the world renown high-end fashion company with 278 stores worldwide
+•	Implemented a dynamic, rich media, e-commerce website using HTML5, LESS, Javascript, Grunt, RequireJS, AJAX, Google Maps, Hybris and localisation
+Relaunched website with prestigious look-and-feel, in line with Gucci’s strict design checklist
+
+
+Officeworks Superstores Pty Ltd, website (http://www.officeworks.com.au/): Jan 2013 – Nov 2014
+ROLE: Front End Designer/Developer	
+•	Liaised with world renown stakeholders such as Apple, Samsung, MYOB and Sandisk
+•	Designed and developed responsive landing pages for multiple devices using Joomla, Websphere Commerce, Mail Chimp, HTML5, LESS, eDM, Photoshop, Bootstrap, Handlebars, AJAX and JQuery
+•	Interviewed and managed a team of 2 developers
+Maintained a website that receives 50,000 visitors per day, $1.1 billion in sales per year and was part of a marketing team that won many awards, including the EFFIE Retail/Etail Advertising award

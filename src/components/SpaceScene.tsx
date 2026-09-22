@@ -84,10 +84,10 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
               <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
               <div className="flex flex-col">
                 <span className="font-orbitron text-xs font-bold tracking-widest text-slate-200">
-                  HUGH // PORTFOLIO
+                  HUGH HUYNH
                 </span>
                 <span className="text-[10px] text-cyan-400/80 font-mono tracking-wider">
-                  VIEWPORT: DEEP SPACE // ORBIT IDLE
+                  PORTFOLIO
                 </span>
               </div>
             </div>
@@ -110,9 +110,6 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
               <Navigation className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
               <span>Select a destination, then press Enter or Space to engage warp drive</span>
             </div>
-            <p className="text-[10px] text-slate-300 font-mono mt-2 tracking-widest">
-              CAMERA = VIEWER // 3D SPACE PROJECTION
-            </p>
           </footer>
         </>
       )}

@@ -1,13 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { SpaceLogo, SPACE_LOGOS, GENERAL_PAGES } from '../config/navigation';
-import { Home } from '../pages/Home';
+import { SpaceLogo, SPACE_LOGOS } from '../config/navigation';
 import { About } from '../pages/About';
-import { Projects } from '../pages/Projects';
-import { Art } from '../pages/Art';
-import { Music } from '../pages/Music';
-import { Photography } from '../pages/Photography';
-import { Travel } from '../pages/Travel';
-import { Contact } from '../pages/Contact';
 import {
   ArrowLeft,
   Compass,
@@ -21,24 +14,22 @@ import {
 
 interface PageContainerProps {
   selectedLogo: SpaceLogo | null;
-  activeGeneralPage: string | null;
   onReturnToSpace: () => void;
   onSelectLogo: (logo: SpaceLogo) => void;
-  onSelectGeneralPage: (pageId: string) => void;
+  onShowAbout: () => void;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
   selectedLogo,
-  activeGeneralPage,
   onReturnToSpace,
   onSelectLogo,
-  onSelectGeneralPage,
+  onShowAbout,
 }) => {
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     mainRef.current?.focus();
-  }, [selectedLogo, activeGeneralPage]);
+  }, [selectedLogo]);
 
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-[#010817] text-slate-200 animate-fade-in select-text">
@@ -55,23 +46,14 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <span>RETURN TO DEEP SPACE</span>
           </button>
 
-          {/* Quick Category Nav Pills */}
-          <nav aria-label="Portfolio sections" className="flex items-center gap-1.5 overflow-x-auto py-1">
-            {GENERAL_PAGES.map((page) => (
-              <button
-                key={page.id}
-                onClick={() => onSelectGeneralPage(page.id)}
-                aria-current={activeGeneralPage === page.id && !selectedLogo ? 'page' : undefined}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all whitespace-nowrap ${
-                  activeGeneralPage === page.id && !selectedLogo
-                    ? 'bg-white/15 text-white border border-white/30'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {page.title.toUpperCase()}
-              </button>
-            ))}
-          </nav>
+          <button
+            type="button"
+            onClick={onShowAbout}
+            aria-current={!selectedLogo ? 'page' : undefined}
+            className="ml-auto px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+          >
+            ABOUT HUGH
+          </button>
         </div>
 
         {/* 8 Logo Quick Jumper Bar */}
@@ -103,7 +85,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
       <main id="main-content" ref={mainRef} tabIndex={-1} className="min-h-[calc(100vh-120px)] py-8">
         {selectedLogo ? (
           /* Render Selected Client Case Study */
-          <div className="max-w-5xl mx-auto px-6 py-6">
+          <div className="max-w-7xl mx-auto py-6">
             {/* Case Study Header Banner */}
             <div className="relative rounded-3xl bg-slate-900/60 border border-white/10 p-8 md:p-12 overflow-hidden mb-12 shadow-2xl">
               {/* Background ambient glow */}
@@ -127,41 +109,50 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                         {selectedLogo.role}
                       </span>
                       <span>{selectedLogo.period}</span>
-                      <span className="text-slate-400">•</span>
-                      <span>DISTANCE: {selectedLogo.z} AU</span>
                     </div>
                     <h1 className="text-3xl md:text-5xl font-extrabold text-white font-orbitron tracking-tight">
                       {selectedLogo.client}
                     </h1>
+                    {selectedLogo.websiteUrl && (
+                      <a
+                        href={selectedLogo.websiteUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-cyan-300 hover:text-cyan-100"
+                      >
+                        Visit project website <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
 
-              {/* Headline & Summary */}
-              <div className="relative z-10 pt-8">
-                <h2 className="text-xl md:text-2xl font-bold text-slate-100 font-space mb-4 leading-snug">
-                  {selectedLogo.headline}
-                </h2>
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-4xl">
-                  {selectedLogo.summary}
-                </p>
+              {/* Live website capture and case-study summary */}
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 items-stretch">
+                <div className="min-h-64 rounded-2xl border border-cyan-400/25 bg-slate-950 shadow-inner overflow-hidden">
+                  {selectedLogo.heroImage ? (
+                    <img
+                      src={selectedLogo.heroImage}
+                      alt={`${selectedLogo.client} website screenshot`}
+                      className="w-full h-full min-h-64 object-cover object-top"
+                    />
+                  ) : (
+                    <div className="h-full min-h-64 flex items-center justify-center text-sm font-mono text-slate-300">
+                      Project screenshot unavailable
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col justify-center">
+                  <h2 className="text-xl md:text-2xl font-bold text-slate-100 font-space mb-4 leading-snug">
+                    {selectedLogo.headline}
+                  </h2>
+                  <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+                    {selectedLogo.summary}
+                  </p>
+                </div>
               </div>
 
-              {/* Hero Image if available (e.g. Jetstar Fighter Jet) */}
-              {selectedLogo.heroImage && (
-                <div className="relative z-10 mt-8 rounded-2xl overflow-hidden border border-white/15 max-h-96">
-                  <img
-                    src={selectedLogo.heroImage}
-                    alt={selectedLogo.client}
-                    className="w-full h-full object-cover object-center brightness-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
-                    <span className="text-xs font-mono text-slate-300">
-                      High-Velocity Engineering Infrastructure
-                    </span>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Quantified Metrics Grid */}
@@ -251,19 +242,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             </div>
           </div>
         ) : (
-          /* Render General Page (Home, About, Projects, etc.) */
-          <div>
-            {activeGeneralPage === 'home' && (
-              <Home onSelectLogo={onSelectLogo} onReturnToSpace={onReturnToSpace} />
-            )}
-            {activeGeneralPage === 'about' && <About />}
-            {activeGeneralPage === 'projects' && <Projects onSelectLogo={onSelectLogo} />}
-            {activeGeneralPage === 'art' && <Art />}
-            {activeGeneralPage === 'music' && <Music />}
-            {activeGeneralPage === 'photography' && <Photography />}
-            {activeGeneralPage === 'travel' && <Travel />}
-            {activeGeneralPage === 'contact' && <Contact />}
-          </div>
+          <About />
         )}
       </main>
     </div>

@@ -6,12 +6,10 @@ import { PageContainer } from './components/PageContainer';
 export const App: React.FC = () => {
   const [sceneState, setSceneState] = useState<SceneState>('idle');
   const [selectedLogo, setSelectedLogo] = useState<SpaceLogo | null>(null);
-  const [activeGeneralPage, setActiveGeneralPage] = useState<string | null>(null);
 
   // Triggered when user selects a logo in 3D Space
   const handleSelectLogo = useCallback((logo: SpaceLogo) => {
     setSelectedLogo(logo);
-    setActiveGeneralPage(null);
     setSceneState('warping');
   }, []);
 
@@ -33,13 +31,10 @@ export const App: React.FC = () => {
   const handleReturnToSpace = useCallback(() => {
     setSceneState('idle');
     setSelectedLogo(null);
-    setActiveGeneralPage(null);
   }, []);
 
-  // Handle switching to a general page (About, Art, Contact, etc.)
-  const handleSelectGeneralPage = useCallback((pageId: string) => {
+  const handleShowAbout = useCallback(() => {
     setSelectedLogo(null);
-    setActiveGeneralPage(pageId);
     setSceneState('page');
   }, []);
 
@@ -57,10 +52,9 @@ export const App: React.FC = () => {
       {sceneState === 'page' && (
         <PageContainer
           selectedLogo={selectedLogo}
-          activeGeneralPage={activeGeneralPage}
           onReturnToSpace={handleReturnToSpace}
           onSelectLogo={handleSelectLogo}
-          onSelectGeneralPage={handleSelectGeneralPage}
+          onShowAbout={handleShowAbout}
         />
       )}
     </div>
