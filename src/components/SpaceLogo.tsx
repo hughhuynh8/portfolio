@@ -19,11 +19,6 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   const focalLength = 12;
   const baseScale = focalLength / (focalLength + logo.z);
 
-  // Perceived distance brightness & sizing
-  const baseOpacity = useMemo(() => {
-    return Math.max(0.5, Math.min(1.0, 1.15 - logo.z / 20));
-  }, [logo.z]);
-
   const transformStyle = useMemo(() => {
     const posX = 50 + logo.x * baseScale;
     const posY = 50 + logo.y * baseScale;
@@ -33,9 +28,8 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
         left: `${posX}%`,
         top: `${posY}%`,
         transform: `translate(-50%, -50%) scale(${baseScale * 1.35})`,
-        opacity: baseOpacity,
         filter: `drop-shadow(0 0 ${Math.max(8, 28 - logo.z)}px ${logo.glowColor})`,
-        transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease',
+        transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
       };
     }
 
@@ -48,7 +42,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       pointerEvents: 'none' as const,
       transition: 'opacity 0.15s ease',
     };
-  }, [sceneState, logo, baseScale, baseOpacity]);
+  }, [sceneState, logo, baseScale]);
 
   if (sceneState === 'flash' || sceneState === 'page') {
     return null;

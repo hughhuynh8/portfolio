@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { SpaceLogo, SPACE_LOGOS } from '../config/navigation';
+import React, { useRef } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { SPACE_LOGOS } from '../config/navigation';
 import { About } from '../pages/About';
 import {
   ArrowLeft,
@@ -12,18 +13,14 @@ import {
 } from 'lucide-react';
 
 interface PageContainerProps {
-  selectedLogo: SpaceLogo | null;
   onReturnToSpace: () => void;
-  onSelectLogo: (logo: SpaceLogo) => void;
-  onShowAbout: () => void;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
-  selectedLogo,
   onReturnToSpace,
-  onSelectLogo,
-  onShowAbout,
 }) => {
+  const { logoId } = useParams<{ logoId: string }>();
+  const selectedLogo = SPACE_LOGOS.find((logo) => logo.id === logoId) ?? null;
   const mainRef = useRef<HTMLElement>(null);
 
   // focus on main content when page container is rendered
@@ -46,14 +43,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <span>RETURN TO DEEP SPACE</span>
           </button>
 
-          <button
-            type="button"
-            onClick={onShowAbout}
-            aria-current={!selectedLogo ? 'page' : undefined}
+          <NavLink
+            to="/about"
             className="ml-auto px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
           >
             ABOUT HUGH
-          </button>
+          </NavLink>
         </div>
 
         {/* 8 Logo Quick Jumper Bar */}
@@ -63,19 +58,18 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             SECTORS:
           </span>
           {SPACE_LOGOS.map((logo) => (
-            <button
+            <NavLink
               key={logo.id}
-              onClick={() => onSelectLogo(logo)}
               aria-label={`View ${logo.client} case study`}
-              aria-current={selectedLogo?.id === logo.id ? 'page' : undefined}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${selectedLogo?.id === logo.id
+              to={`/${logo.id}`}
+              className={({ isActive }) => `px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
                 : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
                 }`}
             >
               <img src={logo.icon} alt="" className="w-3.5 h-3.5 object-contain" />
               <span>{logo.label}</span>
-            </button>
+            </NavLink>
           ))}
         </nav>
       </header>

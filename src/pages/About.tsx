@@ -1,21 +1,34 @@
 import React from 'react';
 import { Terminal, Code, Cpu, Award, Rocket, CheckCircle2 } from 'lucide-react';
+import hughPortrait from '../assets/hugh_portrait.png';
 
 export const About: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 text-slate-200">
       {/* Header */}
       <div className="border-b border-white/10 pb-8 mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-4">
-          <Terminal className="w-3.5 h-3.5" />
-          <span>BIOGRAPHY & BACKGROUND</span>
+        <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="w-[260px] shrink-0">
+            <img
+              src={hughPortrait}
+              alt="Hugh Huynh"
+              className="w-[260px] h-auto object-contain"
+            />
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="inline-flex w-fit items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-4">
+              <Terminal className="w-3.5 h-3.5" />
+              <span>BIOGRAPHY & BACKGROUND</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold text-white font-orbitron tracking-tight mb-4">
+              HUGH HUYNH
+            </h1>
+            <p className="text-lg text-slate-400 font-space leading-relaxed">
+              Software Engineer & Tech Lead specialized in designing resilient, high-performance web systems, design systems, and interactive digital experiences for global enterprises.
+            </p>
+          </div>
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold text-white font-orbitron tracking-tight mb-4">
-          HUGH HUYNH
-        </h1>
-        <p className="text-lg text-slate-400 font-space leading-relaxed max-w-3xl">
-          Software Engineer & Tech Lead specialized in designing resilient, high-performance web systems, design systems, and interactive digital experiences for global enterprises.
-        </p>
       </div>
 
       {/* Grid Content */}
