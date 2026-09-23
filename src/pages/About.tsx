@@ -3,7 +3,7 @@ import { Terminal, Code, Cpu, Award, Rocket, CheckCircle2 } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12 text-slate-200">
+    <div className="max-w-7xl mx-auto px-6 py-12 text-slate-200">
       {/* Header */}
       <div className="border-b border-white/10 pb-8 mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-4">
@@ -11,10 +11,10 @@ export const About: React.FC = () => {
           <span>BIOGRAPHY & BACKGROUND</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-bold text-white font-orbitron tracking-tight mb-4">
-          HUGH // FRONTEND ARCHITECT
+          HUGH HUYNH
         </h1>
         <p className="text-lg text-slate-400 font-space leading-relaxed max-w-3xl">
-          Staff Frontend Engineer & Creative Technologist specialized in designing resilient, high-performance web systems, design systems, and interactive digital experiences for global enterprises.
+          Software Engineer & Tech Lead specialized in designing resilient, high-performance web systems, design systems, and interactive digital experiences for global enterprises.
         </p>
       </div>
 
@@ -27,7 +27,7 @@ export const About: React.FC = () => {
           </div>
           <h3 className="text-lg font-bold text-white mb-2">Systems Architecture</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Building scalable frontend foundations, micro-frontends, design systems, and component ecosystems that empower multi-squad development.
+            Building scalable frontend foundations, micro-frontends, design systems and component ecosystems that empower multi-squad development.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export const About: React.FC = () => {
           </div>
           <h3 className="text-lg font-bold text-white mb-2">High-Velocity UI</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Obsessive focus on Core Web Vitals, sub-second LCP, predictive search, and frictionless booking & checkout flows for millions of concurrent users.
+            Obsessive focus on Core Web Vitals, predictive search, and frictionless booking & checkout flows for millions of concurrent users.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export const About: React.FC = () => {
           </div>
           <h3 className="text-lg font-bold text-white mb-2">Creative Technology</h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Bridging engineering and creative artistry with WebGL, Three.js, Canvas APIs, and sensory motion design that captivates audiences.
+            Bridging engineering and creative artistry with Figma, Photoshop, Illustrator and sensory motion design that captivates audiences.
           </p>
         </div>
       </div>
@@ -60,10 +60,10 @@ export const About: React.FC = () => {
         </h2>
         <div className="space-y-4">
           {[
-            'Over 10+ years engineering enterprise web applications for Qantas, Jetstar, Officeworks, Repco, Autobarn, and more.',
-            'Specialist in React, TypeScript, Next.js, WebGL, Tailwind, state management, and modern bundler optimization.',
+            'Over 19+ years engineering enterprise web applications for Qantas, Jetstar, Officeworks, Repco, Autobarn and more.',
+            'Specialist in React, TypeScript, Next.js, CI/CD, GIT, Tailwind, AWS, state management and performance optimization.',
             'Proven track record scaling mission-critical platforms handling billions of dollars in gross merchandise value.',
-            'Deep expertise in design systems, strict accessibility (WCAG AA), and automated end-to-end testing pipelines.'
+            'Deep expertise in design systems, AA web accessibility (WCAG) and automated end-to-end testing pipelines.'
           ].map((item, idx) => (
             <div key={idx} className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />

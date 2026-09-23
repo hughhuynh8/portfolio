@@ -27,9 +27,10 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 }) => {
   const mainRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    mainRef.current?.focus();
-  }, [selectedLogo]);
+  // focus on main content when page container is rendered
+  // useEffect(() => {
+  //   mainRef.current?.focus();
+  // }, [selectedLogo]);
 
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-[#010817] text-slate-200 animate-fade-in select-text">
@@ -68,11 +69,10 @@ export const PageContainer: React.FC<PageContainerProps> = ({
               onClick={() => onSelectLogo(logo)}
               aria-label={`View ${logo.client} case study`}
               aria-current={selectedLogo?.id === logo.id ? 'page' : undefined}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${
-                selectedLogo?.id === logo.id
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
-                  : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
-              }`}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${selectedLogo?.id === logo.id
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
+                : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
+                }`}
             >
               <img src={logo.icon} alt="" className="w-3.5 h-3.5 object-contain" />
               <span>{logo.label}</span>
@@ -94,9 +94,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                 style={{ background: selectedLogo.glowColor }}
               />
 
-              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
+              {/* <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
                 <div className="flex items-center gap-6">
-                  <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl bg-slate-950/80 p-4 flex items-center justify-center border border-white/15 shadow-inner">
+                  <div
+                    className="w-24 h-24 md:w-28 md:h-28 rounded-2xl p-4 flex items-center justify-center border border-white/15 shadow-inner"
+                    style={{ backgroundColor: selectedLogo.backgroundColor }}
+                  >
                     <img
                       src={selectedLogo.icon}
                       alt={selectedLogo.client}
@@ -104,15 +107,6 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                     />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 mb-2">
-                      <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/30">
-                        {selectedLogo.role}
-                      </span>
-                      <span>{selectedLogo.period}</span>
-                    </div>
-                    <h1 className="text-3xl md:text-5xl font-extrabold text-white font-orbitron tracking-tight">
-                      {selectedLogo.client}
-                    </h1>
                     {selectedLogo.websiteUrl && (
                       <a
                         href={selectedLogo.websiteUrl}
@@ -125,17 +119,18 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                     )}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Live website capture and case-study summary */}
-              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 items-stretch">
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 <div className="min-h-64 rounded-2xl border border-cyan-400/25 bg-slate-950 shadow-inner overflow-hidden">
                   {selectedLogo.heroImage ? (
-                    <img
-                      src={selectedLogo.heroImage}
-                      alt={`${selectedLogo.client} website screenshot`}
-                      className="w-full h-full min-h-64 object-cover object-top"
-                    />
+                    <a href={selectedLogo.websiteUrl} target="_blank" rel="noreferrer" className="block w-full h-full">
+                      <img
+                        src={selectedLogo.heroImage}
+                        alt={`${selectedLogo.client} website screenshot`}
+                        className="w-full h-full min-h-64 object-cover object-top"
+                      /></a>
                   ) : (
                     <div className="h-full min-h-64 flex items-center justify-center text-sm font-mono text-slate-300">
                       Project screenshot unavailable
@@ -143,7 +138,16 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   )}
                 </div>
 
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 mb-2">
+                    <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/30">
+                      {selectedLogo.role}
+                    </span>
+                    <span>{selectedLogo.period}</span>
+                  </div>
+                  <h1 className="text-3xl md:text-5xl font-extrabold text-white font-orbitron mb-4 tracking-tight">
+                    {selectedLogo.client}
+                  </h1>
                   <h2 className="text-xl md:text-2xl font-bold text-slate-100 font-space mb-4 leading-snug">
                     {selectedLogo.headline}
                   </h2>
