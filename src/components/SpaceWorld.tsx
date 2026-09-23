@@ -89,7 +89,7 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 overflow-hidden select-none bg-[#010817]">
+    <div className="fixed inset-0 overflow-hidden select-none bg-[#000000]">
       {/* Full-viewport space background */}
       <div
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -141,9 +141,8 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
 
       {/* 8 Glowing Logos at Different 3D Distances */}
       <div
-        className={`relative w-full h-full transition-opacity duration-200 ${
-          sceneState === 'idle' ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`relative w-full h-full transition-opacity duration-200 ${sceneState === 'idle' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
       >
         {SPACE_LOGOS.map((logo) => (
           <SpaceLogo

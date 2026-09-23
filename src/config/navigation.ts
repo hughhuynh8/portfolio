@@ -28,7 +28,6 @@ export interface SpaceLogo {
   websiteUrl?: string;
   techStack: string[];
   achievements: string[];
-  keyFeatures: { title: string; desc: string }[];
   metrics: { label: string; value: string }[];
 }
 
@@ -53,11 +52,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Engineered sub-50ms instant product search and category filtering system across 60,000+ SKUs',
       'Reduced initial page load LCP by 42% through aggressive server-side hydration optimization',
       'Architected shared design system component library adopted by 4 multi-disciplinary engineering squads'
-    ],
-    keyFeatures: [
-      { title: 'Predictive Fast Search', desc: 'Real-time debounced typeahead engine with personalized search recommendations and instant SKU matching.' },
-      { title: 'Enterprise Cart & Checkout', desc: 'Fault-tolerant checkout flows with multi-tiered delivery calculation and click-and-collect inventory checks.' },
-      { title: 'Accessible UI Library', desc: 'Strict WCAG 2.1 AA compliant component foundation with zero regression automated visual testing.' }
     ],
     metrics: [
       { label: 'Page Speed Boost', value: '+42%' },
@@ -86,11 +80,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Designed responsive trade checkout with dynamic wholesale pricing tiers and branch delivery routing',
       'Boosted mobile search-to-cart completion rate by 28% through an intuitive touch-friendly wizard'
     ],
-    keyFeatures: [
-      { title: 'Rego Fitment Engine', desc: 'Instant vehicle lookup mapping 100,000+ car models to exact OEM and aftermarket replacement parts.' },
-      { title: 'B2B Trade Dashboard', desc: 'Multi-account trade ordering with live credit account balances, invoice retrieval, and quick order sheets.' },
-      { title: 'Store Inventory Matrix', desc: 'Geo-located live store stock checks across 400+ Repco branches with real-time reserve-in-store.' }
-    ],
     metrics: [
       { label: 'Lookup Latency', value: '<65ms' },
       { label: 'Parts Indexed', value: '450K+' },
@@ -102,9 +91,9 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
     label: 'QANTAS',
     client: 'Qantas Airways',
     icon: '/assets/logos/qantas_logo.png',
-    x: -28,
+    x: -32,
     y: -22,
-    z: 6.8,
+    z: 4.8,
     color: '#e40000',
     glowColor: 'rgba(228, 0, 0, 0.45)',
     backgroundColor: '#ffffff',
@@ -117,11 +106,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Crafted seamless Qantas Frequent Flyer points redemption and cash co-pay booking engine',
       'Engineered interactive hotel room configuration gallery with dynamic amenity filters and live rate updates',
       'Maintained 99.99% frontend uptime through major holiday flash sale peaks with millions of concurrent sessions'
-    ],
-    keyFeatures: [
-      { title: 'Points + Pay Dynamic Slider', desc: 'Real-time points calculations enabling frequent flyers to seamlessly balance points and cash.' },
-      { title: 'Interactive Map & Stay Discovery', desc: 'High-performance interactive mapping with cluster pins, neighborhood guides, and pricing highlights.' },
-      { title: 'Mobile-Optimized Fast Pass', desc: 'Streamlined 2-step checkout with Apple Pay, Google Pay, and stored travel preferences.' }
     ],
     metrics: [
       { label: 'Bookings Handled', value: '1.2M+' },
@@ -150,11 +134,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Built interactive 3D product visualizer highlighting ultra-thin hardware craftsmanship and tactile textures',
       'Created custom PDF and ePub document previewer with cloud-synced annotations'
     ],
-    keyFeatures: [
-      { title: 'Vector Stroke Renderer', desc: 'GPU-accelerated Bezier curve rendering preserving authentic pen pressure, tilt, and paper grain.' },
-      { title: 'Live Screen Sharing', desc: 'WebRTC and WebSocket live stream showing real-time note-taking directly from reMarkable to browser.' },
-      { title: 'Distraction-Free Workspace', desc: 'Minimalist, clutter-free reader with typography tuning and dark/light paper modes.' }
-    ],
     metrics: [
       { label: 'Render Frame Rate', value: '60 FPS' },
       { label: 'Note Sync Speed', value: '<120ms' },
@@ -181,11 +160,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Built intelligent audio wiring harness compatibility matcher matching head units to vehicle dashes',
       'Streamlined store fulfillment workflow reducing click-and-collect readiness time from 2 hours to 20 minutes',
       'Increased mobile revenue share by 34% through responsive navigation overhaul'
-    ],
-    keyFeatures: [
-      { title: 'In-Car Audio Visualizer', desc: 'Interactive dashboard simulator showing double-DIN and single-DIN head units in realistic car interiors.' },
-      { title: 'Express Store Pickup', desc: 'Automated SMS notification and 30-minute click-and-collect fulfillment tracking.' },
-      { title: 'Service Booking Portal', desc: 'Online booking engine for dashcam installations, battery checks, and roof rack fittings.' }
     ],
     metrics: [
       { label: 'Click & Collect Speed', value: '20 min' },
@@ -215,11 +189,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Developed offline-capable PWA boarding pass wallet with gate departure countdowns',
       'Reduced checkout drop-off rate by 19% with instant seat selection and baggage upsell cards'
     ],
-    keyFeatures: [
-      { title: 'Low-Fare Radar', desc: 'Visual 30-day fare calendar highlighting lowest price departures across domestic and international routes.' },
-      { title: 'Fast-Track Check-In', desc: '3-tap mobile check-in generating digital boarding passes directly into device wallet.' },
-      { title: 'High-Altitude Reliability', desc: 'Ultra-resilient offline caching providing flight itinerary access even in airplane mode.' }
-    ],
     metrics: [
       { label: 'Daily Bookings', value: '45K+' },
       { label: 'Drop-off Reduction', value: '-19%' },
@@ -247,11 +216,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Created multi-activity party builder combining bowling, karaoke, and cocktails in a single checkout',
       'Delivered vibrant dark-mode UI with neon glow aesthetics inspired by arcade nightlife'
     ],
-    keyFeatures: [
-      { title: 'Live Lane Matrix', desc: 'Real-time visualization of lane occupancy and next-available timeslots with instant lock.' },
-      { title: 'Party Bundler', desc: 'Interactive package configurator for corporate events, birthday celebrations, and VIP booths.' },
-      { title: 'Gamified Experience', desc: 'Animated countdowns, arcade sound effects, and digital scorecards shareable on social media.' }
-    ],
     metrics: [
       { label: 'Booking Velocity', value: '3x Faster' },
       { label: 'Venues Connected', value: '24' },
@@ -264,11 +228,11 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
     client: 'Spotlight Retail Group',
     icon: '/assets/logos/spotlight_logo.png',
     x: -8,
-    y: -30,
-    z: 16.5,
+    y: -50,
+    z: 10.5,
     color: '#ec4899',
     glowColor: '#2c4390',
-    backgroundColor: '#2c4390',
+    backgroundColor: 'rgb(23, 78, 163)',
     role: 'Senior Frontend Developer',
     period: '2020',
     headline: 'Creative Craft, Fabric & Home Decor Omnichannel Store',
@@ -278,11 +242,6 @@ const ALL_SPACE_LOGOS: SpaceLogo[] = [
       'Built decimal meterage fabric pricing calculator eliminating ordering errors',
       'Created interactive inspiration gallery connecting creative project guides to cart item bundles',
       'Optimized catalog search filters for color swatches, fabric textures, and craft levels'
-    ],
-    keyFeatures: [
-      { title: 'Fabric Meterage Calculator', desc: 'Instant calculation of roll lengths, cuts, and discounts with live remnant stock alerts.' },
-      { title: 'Make-It Project Bundles', desc: 'Curated step-by-step DIY project guides allowing one-click purchase of all required craft materials.' },
-      { title: 'VIP Club Rewards Portal', desc: 'Member discounts, digital vouchers, and personalized craft recommendation feed.' }
     ],
     metrics: [
       { label: 'Fabric Order Accuracy', value: '99.8%' },
@@ -303,15 +262,10 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Developed and maintained the Qantas Holidays application, providing the ultimate travel booking experience to millions of visitors per day and resolving production issues.',
     techStack: ['Next.js', 'React', 'Buildkite', 'Sanity', 'Contentful', 'AWS', 'Splunk', 'Datadog', 'Sentry', 'Jest', 'Cypress'],
     achievements: ['Developed and updated a high-traffic travel application.', 'Resolved production support issues across the customer experience.', 'Maintained the platform during Jetstar’s largest sale of the year, which generated $6M in revenue.'],
-    keyFeatures: [
-      { title: 'Travel booking platform', desc: 'Ongoing development and maintenance for the Qantas Holidays web experience.' },
-      { title: 'Content platforms', desc: 'Worked with Sanity and Contentful CMS to support marketing content.' },
-      { title: 'Production support', desc: 'Diagnosed and resolved live issues during the largest sale of the year.' },
-    ],
     metrics: [{ label: 'Tenure', value: '3+ yrs' }, { label: 'Daily audience', value: '290k' }, { label: 'yearly revenue', value: '$79.6M' }],
   },
   remarkable: {
-    client: 'Remarkable Furniture',
+    client: 'Remarkable',
     role: 'Technical Lead',
     period: 'Jul 2022 — Nov 2022',
     websiteUrl: 'https://www.remarkablefurniture.com.au/',
@@ -320,11 +274,6 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Led development and updates for Shopify e-commerce stores, managing a team of four while delivering performance and SEO focused retail solutions.',
     techStack: ['Shopify', 'React', 'Gatsby', 'Netlify', 'Tailwind CSS', 'Google Cloud', 'GraphQL'],
     achievements: ['Led and managed a team of four.', 'Developed and updated Shopify e-commerce stores for major retailers.', 'Delivered SEO and performance-optimised Shopify solution.'],
-    keyFeatures: [
-      { title: 'Shopify Plus delivery', desc: 'Built and maintained ecommerce experiences on Shopify.' },
-      { title: 'Technical leadership', desc: 'Coordinated a four-person delivery team.' },
-      { title: 'Performance and SEO', desc: 'Prioritised discoverability and fast retail experiences.' },
-    ],
     metrics: [{ label: 'Role', value: 'Tech Lead' }, { label: 'Team managed', value: '4' }, { label: 'Tenure', value: '5 mos' }],
   },
   repco: {
@@ -337,11 +286,6 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Developed site with high usability features such as rego lookup (to quickly find parts that fit your car).',
     techStack: ['SAP Hybris', 'HTML', 'LESS', 'Bootstrap 3', 'JavaScript', 'Grunt'],
     achievements: ['Completed the initial build of Repco’s Hybris site.', 'Implemented client-requested ecommerce features.', 'Delivered performance enhancements to improve website speed.'],
-    keyFeatures: [
-      { title: 'Hybris storefront', desc: 'Developed the ecommerce website.' },
-      { title: 'Performance work', desc: 'Implemented website-speed improvements.' },
-      { title: 'Feature delivery', desc: 'Added functionality in response to client requirements.' },
-    ],
     metrics: [{ label: 'Tenure', value: '4+ yrs' }, { label: 'Products', value: '200k' }, { label: 'Focus', value: 'Performance' }],
   },
   spotlight: {
@@ -354,11 +298,6 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Developed a craft and homewares ecommerce solution and supported its launch across more than one hundred stores and ten million products.',
     techStack: ['SAP Hybris', 'HTML', 'Sass', 'Bootstrap 4', 'Angular 6', 'Grunt'],
     achievements: ['Developed the craft and homewares ecommerce solution.', 'Deployed in time for September campaign launch.', 'Supported a rollout spanning 100+ stores and 10M products.'],
-    keyFeatures: [
-      { title: 'E-commerce delivery', desc: 'Developed retail web experiences for craft and homewares.' },
-      { title: 'Angular frontend', desc: 'Worked with Angular 6, Sass and Bootstrap 4.' },
-      { title: 'Large-scale launch', desc: 'Supported a high-volume national retail rollout.' },
-    ],
     metrics: [{ label: 'Tenure', value: '4+ yrs' }, { label: 'Stores', value: '100+' }, { label: 'Products', value: '10M' }],
   },
   strike: {
@@ -371,29 +310,19 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Developed booking-capable ecommerce websites with a distributed team, using a shared template and CSS theming across three Funlab brands (Strike, Holy Moley and Skyzone).',
     techStack: ['HTML', 'PostCSS', 'Vue.js', 'JavaScript', 'Gulp', 'Sitecore'],
     achievements: ['Developed three websites with a shared template and CSS theme system.', 'Built booking-capable ecommerce experiences.', 'Coordinated delivery with a team in Ukraine.'],
-    keyFeatures: [
-      { title: 'Shared template', desc: 'Created a reusable foundation across three entertainment brands.' },
-      { title: 'Booking experiences', desc: 'Delivered ecommerce websites with booking capability.' },
-      { title: 'Distributed delivery', desc: 'Coordinated closely with an overseas development team.' },
-    ],
     metrics: [{ label: 'Tenure', value: '7 mos' }, { label: 'Brand sites', value: '3' }, { label: 'Platform', value: 'Sitecore' }],
   },
   sap: {
     client: 'SAP Commerce',
     role: 'Lead Front End Designer/Developer',
     period: 'Nov 2015 — Aug 2016',
-    websiteUrl: 'https://help.sap.com/docs/SAP_COMMERCE/4c33bf189ab9409e84e589295c36d96e/258b5c5265074cc2961eaacd5054140d.html',
+    websiteUrl: 'https://help.sap.com/docs/TRAVEL_ACCELERATOR/a8c68f0779794a168390478daa3ab4eb/c68ddbaaced24dae8ba5e0c7e041a1c3.html?locale=en-US',
     heroImage: sapScreenshot,
     headline: 'Travel Accelerator customisation for SAP Commerce',
     summary: 'Developed and customised a travel product for SAP/Hybris, while architecting team-wide JavaScript and AA accessibility-standard frontend code.',
     techStack: ['SAP Commerce', 'SAP Hybris', 'JavaScript', 'HTML', 'CSS', 'Web Accessibility'],
     achievements: ['Architected and managed JavaScript practices for the delivery team.', 'Developed AA web-accessibility-standard frontend code.', 'Launched in June 2016; the product was sold to EasyJet, P&O and other travel companies.'],
-    keyFeatures: [
-      { title: 'Travel Accelerator', desc: 'Customised SAP Commerce travel functionality.' },
-      { title: 'Frontend architecture', desc: 'Set JavaScript direction for the broader delivery team.' },
-      { title: 'Accessible frontend', desc: 'Implemented AA accessibility-standard frontend code.' },
-    ],
-    metrics: [{ label: 'Tenure', value: '10 mos' }, { label: 'Launch', value: 'Jun 2016' }, { label: 'Standard', value: 'WCAG AA' }],
+    metrics: [{ label: 'Tenure', value: '10 mos' }, { label: 'Launch', value: 'Jun 2016' }, { label: 'Accessibility standard', value: 'AA WCAG' }],
   },
   gucci: {
     client: 'Gucci',
@@ -405,15 +334,10 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Developed a dynamic e-commerce website for Gucci, combining rich media, localisation, maps and Hybris integration to meet the brand’s detailed design requirements.',
     techStack: ['HTML5', 'LESS', 'JavaScript', 'Grunt', 'RequireJS', 'AJAX', 'Google Maps', 'SAP Hybris'],
     achievements: ['Implemented a dynamic, rich-media ecommerce website.', 'Delivered localisation and Google Maps functionality.', 'Relaunched the site in line with Gucci’s strict design guidelines.'],
-    keyFeatures: [
-      { title: 'Rich media commerce', desc: 'Built dynamic HTML5 and JavaScript experiences.' },
-      { title: 'Localisation', desc: 'Supported an international retail experience.' },
-      { title: 'Hybris integration', desc: 'Delivered within the Hybris ecommerce stack.' },
-    ],
     metrics: [{ label: 'Tenure', value: '4 mos' }, { label: 'Stores', value: '278' }, { label: 'Platform', value: 'Hybris' }],
   },
   officeworks: {
-    client: 'Officeworks Superstores',
+    client: 'Officeworks',
     role: 'Front End Designer/Developer',
     period: 'Jan 2013 — Nov 2014',
     websiteUrl: 'https://www.officeworks.com.au/',
@@ -422,11 +346,6 @@ const RESUME_DETAILS: Record<string, Partial<SpaceLogo>> = {
     summary: 'Designed and developed responsive landing pages across devices, working with major brand stakeholders and supporting a large Australian retail website.',
     techStack: ['WebSphere Commerce', 'Mailchimp', 'HTML5', 'LESS', 'eDM', 'Photoshop', 'Bootstrap', 'Handlebars', 'AJAX', 'jQuery'],
     achievements: ['Designed and developed responsive landing pages for multiple devices.', 'Interviewed and managed a team of two developers.', 'Supported a site with 50,000 daily visitors and $1.1B annual sales.'],
-    keyFeatures: [
-      { title: 'Responsive campaigns', desc: 'Designed and developed device-responsive retail landing pages.' },
-      { title: 'Stakeholder delivery', desc: 'Liaised with Apple, Samsung, MYOB and SanDisk stakeholders.' },
-      { title: 'Commerce ecosystem', desc: 'Worked across WebSphere Commerce, Joomla and campaign tooling.' },
-    ],
     metrics: [{ label: 'Tenure', value: '2 yrs' }, { label: 'Daily visitors', value: '50K' }, { label: 'Annual sales', value: '$1.1B' }],
   },
 };

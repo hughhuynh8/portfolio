@@ -55,7 +55,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
   }, [sceneState, onTransitionComplete]);
 
   return (
-    <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#010817]">
+    <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#000000]">
       <h1 className="sr-only">Hugh's portfolio destinations</h1>
       {/* 3D Space World with 8 Glowing Logos */}
       <SpaceWorld

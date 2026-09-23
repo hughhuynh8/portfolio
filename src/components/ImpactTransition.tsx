@@ -18,16 +18,14 @@ export const ImpactTransition: React.FC<ImpactTransitionProps> = ({ sceneState }
 
       {/* Fullscreen White Flash Transition */}
       <div
-        className={`absolute inset-0 bg-white transition-opacity duration-300 ${
-          sceneState === 'flash' ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`absolute inset-0 bg-white transition-opacity duration-300 ${sceneState === 'flash' ? 'opacity-100' : 'opacity-0'
+          }`}
       />
 
       {/* Fade to Black Transition into Page */}
       <div
-        className={`absolute inset-0 bg-[#010817] transition-opacity duration-500 ${
-          sceneState === 'page' ? 'opacity-0 pointer-events-none' : 'opacity-0'
-        }`}
+        className={`absolute inset-0 bg-[#000000] transition-opacity duration-500 ${sceneState === 'page' ? 'opacity-0 pointer-events-none' : 'opacity-0'
+          }`}
       />
     </div>
   );

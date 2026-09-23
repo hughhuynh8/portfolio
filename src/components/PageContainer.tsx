@@ -6,7 +6,6 @@ import {
   Compass,
   ExternalLink,
   CheckCircle2,
-  Cpu,
   Layers,
   Sparkles,
   TrendingUp,
@@ -33,10 +32,10 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   // }, [selectedLogo]);
 
   return (
-    <div className="fixed inset-0 z-40 overflow-y-auto bg-[#010817] text-slate-200 animate-fade-in select-text">
+    <div className="fixed inset-0 z-40 overflow-y-auto bg-[#000000] text-slate-200 animate-fade-in select-text">
       <a className="skip-link" href="#main-content">Skip to main content</a>
       {/* Top Navigation HUD */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#010817]/80 border-b border-white/10 px-6 py-4">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#000000]/80 border-b border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           {/* Back to 3D Space Button */}
           <button
@@ -175,28 +174,6 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   </span>
                 </div>
               ))}
-            </div>
-
-            {/* Key Features & Architecture */}
-            <div className="rounded-3xl bg-slate-900/40 border border-white/10 p-8 md:p-10 mb-12">
-              <h3 className="text-xl font-bold text-white font-orbitron mb-8 flex items-center gap-2.5">
-                <Cpu className="w-5 h-5 text-cyan-400" />
-                <span>ARCHITECTURAL INNOVATIONS</span>
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {selectedLogo.keyFeatures.map((feat, idx) => (
-                  <div key={idx} className="p-6 rounded-2xl bg-slate-950/50 border border-white/5 flex flex-col justify-between">
-                    <div>
-                      <h4 className="font-bold text-white text-base mb-2 font-space">
-                        {feat.title}
-                      </h4>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        {feat.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Technical Achievements */}

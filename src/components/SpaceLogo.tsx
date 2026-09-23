@@ -97,20 +97,6 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
           draggable={false}
         />
       </div>
-
-      {/* Label and Distance Indicator */}
-      <div
-        className={`mt-2 flex flex-col items-center pointer-events-none transition-all duration-300 ${
-          sceneState === 'idle' ? 'opacity-80 group-hover:opacity-100' : 'opacity-0'
-        }`}
-      >
-        <span className="text-[11px] md:text-xs font-semibold tracking-widest text-slate-200 uppercase font-space group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
-          {logo.label}
-        </span>
-        <span className="text-[9px] text-slate-300 font-mono tracking-wider">
-          {logo.z.toFixed(1)} AU
-        </span>
-      </div>
     </button>
   );
 };

@@ -78,7 +78,7 @@ export const App: React.FC = () => {
   }, [pushPath]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#010817]">
+    <div className="relative w-screen h-screen overflow-hidden bg-[#000000]">
       {/* 3D Space Scene with Logos, Warp Field, and Transitions */}
       <SpaceScene
         sceneState={sceneState}

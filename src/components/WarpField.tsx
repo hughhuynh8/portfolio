@@ -123,9 +123,8 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) 
 
   return (
     <div
-      className={`fixed inset-0 pointer-events-none transition-opacity duration-300 z-20 ${
-        active ? 'opacity-100' : 'opacity-0'
-      }`}
+      className={`fixed inset-0 pointer-events-none transition-opacity duration-300 z-20 ${active ? 'opacity-100' : 'opacity-0'
+        }`}
     >
       <canvas ref={canvasRef} aria-hidden="true" className="fixed inset-0 pointer-events-none" />
 
@@ -133,11 +132,13 @@ export const WarpField: React.FC<WarpFieldProps> = ({ active, progress, logo }) 
       {active && logo && (
         <img
           src={logo.icon}
-          alt=""
+          alt={logo.label}
           className="fixed top-1/2 left-1/2 pointer-events-none z-30 select-none object-contain h-24 md:h-32 w-auto max-w-[300px] md:max-w-[420px]"
           style={{
             transform: `translate3d(-50%, -50%, 0) scale(${zoomScale})`,
             opacity: logoOpacity,
+            backgroundColor: logo.backgroundColor,
+            padding: '0.75rem',
             willChange: 'transform, opacity',
           }}
           draggable={false}

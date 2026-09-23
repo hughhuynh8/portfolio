@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #010817;
+  background-color: #000000;
   color: #f1f5f9;
   overflow: hidden;
   user-select: none;
@@ -42,6 +42,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -84,8 +85,17 @@ body {
 
 /* Star twinkling animations */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .animate-twinkle {
