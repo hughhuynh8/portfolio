@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { SpaceLogo as SpaceLogoType } from '../config/navigation';
 import { SpaceWorld } from './SpaceWorld';
 import { WarpField } from './WarpField';
@@ -56,7 +57,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
 
   return (
     <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#000000]">
-      <h1 className="sr-only">Hugh's portfolio destinations</h1>
+      <h1 className="sr-only">Hugh Huynh portfolio</h1>
       {/* 3D Space World with 8 Glowing Logos */}
       <SpaceWorld
         sceneState={sceneState}
@@ -83,9 +84,9 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
             <div className="flex items-center gap-3">
               <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
               <div className="flex flex-col">
-                <span className="font-orbitron text-xs font-bold tracking-widest text-slate-200">
+                <Link to="/about" className="pointer-events-auto font-orbitron text-lg font-bold tracking-widest text-slate-200 hover:text-cyan-300">
                   HUGH HUYNH
-                </span>
+                </Link>
                 <span className="text-[10px] text-cyan-400/80 font-mono tracking-wider">
                   PORTFOLIO
                 </span>
