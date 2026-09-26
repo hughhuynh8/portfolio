@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { SpaceLogo as SpaceLogoType } from '../config/navigation';
+import { preloadImage } from '../utils/preloadImage';
 
 interface SpaceLogoProps {
   logo: SpaceLogoType;
@@ -56,6 +57,9 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
       aria-label={`View ${logo.client} case study`}
       aria-disabled={sceneState !== 'idle'}
       tabIndex={sceneState === 'idle' ? 0 : -1}
+      onPointerEnter={() => preloadImage(logo.heroImage)}
+      onFocus={() => preloadImage(logo.heroImage)}
+      onPointerDown={() => preloadImage(logo.heroImage)}
       onClick={(event) => {
         if (sceneState !== 'idle') {
           event.preventDefault();

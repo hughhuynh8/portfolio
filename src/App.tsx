@@ -4,6 +4,7 @@ import { SpaceLogo, SPACE_LOGOS } from './config/navigation';
 import { SpaceScene, SceneState } from './components/SpaceScene';
 import { PageContainer } from './components/PageContainer';
 import { PageMetadata } from './components/PageMetadata';
+import { preloadImage } from './utils/preloadImage';
 
 const SpaceRoute: React.FC = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const SpaceRoute: React.FC = () => {
   }, []);
 
   const handleSelectLogo = useCallback((logo: SpaceLogo) => {
+    preloadImage(logo.heroImage);
     setSelectedLogo(logo);
     setSceneState('warping');
   }, []);

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { SPACE_LOGOS } from '../config/navigation';
 import { About } from '../pages/About';
+import { preloadImage } from '../utils/preloadImage';
 import {
   ArrowLeft,
   Compass,
@@ -62,6 +63,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
               key={logo.id}
               aria-label={`View ${logo.client} case study`}
               to={`/${logo.id}`}
+              onPointerEnter={() => preloadImage(logo.heroImage)}
+              onFocus={() => preloadImage(logo.heroImage)}
+              onPointerDown={() => preloadImage(logo.heroImage)}
               className={({ isActive }) => `px-2.5 py-1 rounded-md text-sm font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
                 : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
@@ -116,13 +120,15 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
               {/* Live website capture and case-study summary */}
               <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                <div className="min-h-64 rounded-2xl border border-cyan-400/25 bg-slate-950 shadow-inner overflow-hidden">
+                <div className="self-start min-w-0 rounded-2xl border border-cyan-400/25 bg-slate-950 shadow-inner overflow-hidden">
                   {selectedLogo.heroImage ? (
-                    <a href={selectedLogo.websiteUrl} target="_blank" rel="noreferrer" className="block w-full h-full">
+                    <a href={selectedLogo.websiteUrl} target="_blank" rel="noreferrer" className="block w-full">
                       <img
+                        key={selectedLogo.heroImage}
                         src={selectedLogo.heroImage}
+                        loading="eager"
                         alt={`${selectedLogo.client} website screenshot`}
-                        className="w-full h-full min-h-64 object-cover object-top"
+                        className="block w-full h-auto"
                       /></a>
                   ) : (
                     <div className="h-full min-h-64 flex items-center justify-center text-sm font-mono text-slate-300">
@@ -211,7 +217,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <div className="flex justify-center pb-12">
               <button
                 onClick={onReturnToSpace}
-                className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold font-orbitron tracking-widest transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(56,189,248,0.4)]"
+                className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold font-orbitron tracking-widest transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(56,189,248,0.4)]"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>RETURN TO DEEP SPACE</span>
