@@ -6,18 +6,18 @@ export const About: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 text-slate-200">
       {/* Header */}
-      <div className="border-b border-white/10 pb-8 mb-12">
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="w-[260px] shrink-0">
+      <div className="border-b border-white/10 pb-6 mb-6 sm:mb-12">
+        <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
+          <div className="w-full md:w-[260px] shrink-0">
             <img
               src={hughPortrait}
               alt="Hugh Huynh"
-              className="w-[260px] h-auto object-contain"
+              className="w-full h-auto object-contain"
             />
           </div>
 
           <div className="flex-1 flex flex-col justify-center">
-            <div className="inline-flex w-fit items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-4">
+            <div className="inline-flex w-fit items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-sm font-mono mb-4">
               <Terminal className="w-3.5 h-3.5" />
               <span>BIOGRAPHY & BACKGROUND</span>
             </div>
@@ -32,7 +32,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* Grid Content */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-12">
         {/* Core Principles */}
         <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10">
           <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">

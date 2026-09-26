@@ -87,13 +87,13 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
                 <Link to="/about" className="pointer-events-auto font-orbitron text-lg font-bold tracking-widest text-slate-200 hover:text-cyan-300">
                   HUGH HUYNH
                 </Link>
-                <span className="text-[10px] text-cyan-400/80 font-mono tracking-wider">
+                <span className="text-sm text-cyan-400/80 font-mono tracking-wider">
                   PORTFOLIO
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-mono text-slate-400 bg-slate-900/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-inner">
+            <div className="flex items-center gap-4 text-sm font-mono text-slate-400 bg-slate-900/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-inner">
               <span className="flex items-center gap-1.5 text-cyan-300">
                 <Compass className="w-3.5 h-3.5 text-cyan-400" />
                 8 TARGETS ACQUIRED
@@ -107,7 +107,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
 
           {/* Bottom Interaction Guide */}
           <footer className="fixed bottom-6 left-0 right-0 flex flex-col items-center justify-center pointer-events-none z-30 text-center px-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-cyan-500/20 text-slate-300 text-xs tracking-wide shadow-2xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-cyan-500/20 text-slate-300 text-sm tracking-wide shadow-2xl">
               <Navigation className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
               <span>Select a destination, then press Enter or Space to engage warp drive</span>
             </div>
@@ -118,7 +118,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
       {/* Warping State HUD Warning */}
       {sceneState === 'warping' && selectedLogo && (
         <div className="fixed top-12 left-0 right-0 flex justify-center items-center pointer-events-none z-40">
-          <div className="px-5 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-cyan-400/60 text-cyan-300 font-orbitron text-xs tracking-widest animate-pulse flex items-center gap-2.5 shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+          <div className="px-5 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-cyan-400/60 text-cyan-300 font-orbitron text-sm tracking-widest animate-pulse flex items-center gap-2.5 shadow-[0_0_20px_rgba(56,189,248,0.5)]">
             <Sparkles className="w-4 h-4 text-cyan-300 animate-spin" />
             <span>WARPING TO {selectedLogo.label} // VELOCITY {Math.round(warpProgress * 99)}c</span>
           </div>

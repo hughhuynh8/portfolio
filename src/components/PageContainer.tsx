@@ -40,12 +40,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-semibold tracking-wider transition-all duration-200 hover:scale-105 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>RETURN TO DEEP SPACE</span>
+            <span>RETURN <span className="hidden sm:inline">TO DEEP SPACE</span></span>
           </button>
 
           <NavLink
             to="/about"
-            className="ml-auto px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+            className="ml-auto px-3 py-1.5 rounded-lg text-sm font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
           >
             ABOUT HUGH
           </NavLink>
@@ -53,7 +53,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
         {/* 8 Logo Quick Jumper Bar */}
         <nav aria-label="Case studies" className="max-w-7xl mx-auto pt-3 flex items-center gap-2 overflow-x-auto scrollbar-none">
-          <span className="text-[10px] font-mono text-cyan-300 whitespace-nowrap mr-1 flex items-center gap-1">
+          <span className="text-sm font-mono text-cyan-300 whitespace-nowrap mr-1 flex items-center gap-1">
             <Compass className="w-3 h-3 text-cyan-400" />
             SECTORS:
           </span>
@@ -62,7 +62,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
               key={logo.id}
               aria-label={`View ${logo.client} case study`}
               to={`/${logo.id}`}
-              className={({ isActive }) => `px-2.5 py-1 rounded-md text-[11px] font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
+              className={({ isActive }) => `px-2.5 py-1 rounded-md text-sm font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
                 : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
                 }`}
@@ -75,12 +75,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
       </header>
 
       {/* Main Content Area */}
-      <main id="main-content" ref={mainRef} tabIndex={-1} className="min-h-[calc(100vh-120px)] py-8">
+      <main id="main-content" ref={mainRef} tabIndex={-1} className="min-h-[calc(100vh-120px)] sm:py-8">
         {selectedLogo ? (
           /* Render Selected Client Case Study */
           <div className="max-w-7xl mx-auto py-6">
             {/* Case Study Header Banner */}
-            <div className="relative rounded-3xl bg-slate-900/60 border border-white/10 p-8 md:p-12 overflow-hidden mb-12 shadow-2xl">
+            <div className="relative rounded-3xl bg-slate-900/60 border border-white/10 p-8 md:p-12 overflow-hidden mb-6 sm:mb-12 shadow-2xl">
               {/* Background ambient glow */}
               <div
                 className="absolute -right-24 -top-24 w-96 h-96 rounded-full blur-3xl opacity-30 pointer-events-none"
@@ -105,7 +105,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                         href={selectedLogo.websiteUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-cyan-300 hover:text-cyan-100"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-mono text-cyan-300 hover:text-cyan-100"
                       >
                         Visit project website <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
                       </a>
@@ -132,7 +132,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 mb-2">
+                  <div className="flex items-center gap-3 text-sm font-mono text-cyan-400 mb-2">
                     <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/30">
                       {selectedLogo.role}
                     </span>
@@ -144,16 +144,18 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   <h2 className="text-xl md:text-2xl font-bold text-slate-100 font-space mb-4 leading-snug">
                     {selectedLogo.headline}
                   </h2>
-                  <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                    {selectedLogo.summary}
-                  </p>
+                  {/* Summary HTML is authored locally in SPACE_LOGOS. */}
+                  <p
+                    className="text-slate-300 text-base md:text-lg leading-relaxed [&_a]:text-cyan-300 [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-cyan-100"
+                    dangerouslySetInnerHTML={{ __html: selectedLogo.summary }}
+                  />
                 </div>
               </div>
 
             </div>
 
             {/* Quantified Metrics Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-3 gap-6 mb-6 sm:mb-12">
               {selectedLogo.metrics.map((metric, idx) => (
                 <div
                   key={idx}
@@ -163,7 +165,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   <span className="text-3xl md:text-4xl font-extrabold text-white font-orbitron tracking-tight mb-1">
                     {metric.value}
                   </span>
-                  <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                  <span className="text-sm font-mono text-slate-400 uppercase tracking-wider">
                     {metric.label}
                   </span>
                 </div>
@@ -171,7 +173,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             </div>
 
             {/* Technical Achievements */}
-            <div className="rounded-3xl bg-slate-900/40 border border-white/10 p-8 md:p-10 mb-12">
+            <div className="rounded-3xl bg-slate-900/40 border border-white/10 p-8 md:p-10 mb-6 sm:mb-12">
               <h3 className="text-xl font-bold text-white font-orbitron mb-6 flex items-center gap-2.5">
                 <Sparkles className="w-5 h-5 text-cyan-400" />
                 <span>KEY ENGINEERING DELIVERABLES</span>
@@ -189,7 +191,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             </div>
 
             {/* Tech Stack Pills */}
-            <div className="rounded-3xl bg-slate-900/40 border border-white/10 p-8 mb-12">
+            <div className="rounded-3xl bg-slate-900/40 border border-white/10 p-8 mb-6 sm:mb-12">
               <h3 className="text-sm font-mono text-cyan-400 uppercase tracking-widest mb-4">
                 TECHNOLOGY ECOSYSTEM
               </h3>
@@ -197,7 +199,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                 {selectedLogo.techStack.map((tech, idx) => (
                   <span
                     key={idx}
-                    className="px-3.5 py-1.5 rounded-lg bg-slate-800 border border-white/10 text-xs font-mono text-slate-200"
+                    className="px-3.5 py-1.5 rounded-lg bg-slate-800 border border-white/10 text-sm font-mono text-slate-200"
                   >
                     {tech}
                   </span>
