@@ -28,7 +28,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
         left: `${posX}%`,
         top: `${posY}%`,
         transform: `translate(-50%, -50%) scale(${baseScale * 1.35})`,
-        filter: `drop-shadow(0 0 ${Math.max(8, 28 - logo.z)}px ${logo.glowColor})`,
+        filter: `drop-shadow(0 0 ${Math.max(8, 28 - logo.z)}px color-mix(in srgb, ${logo.glowColor} 30%, transparent))`,
         transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
       };
     }
@@ -63,7 +63,7 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
     >
       {/* Outer ambient glow nebula */}
       <div
-        className="absolute -inset-6 rounded-full opacity-60 blur-xl pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-125"
+        className="absolute -inset-6 rounded-full opacity-[0.18] blur-xl pointer-events-none transition-all duration-300 group-hover:opacity-30 group-hover:scale-125"
         style={{
           background: `radial-gradient(circle, ${logo.glowColor} 0%, transparent 70%)`,
         }}

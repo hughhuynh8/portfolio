@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { SpaceLogo as SpaceLogoType, SPACE_LOGOS } from '../config/navigation';
 import { SpaceLogo } from './SpaceLogo';
-import spaceBackground from '../assets/space.png';
+import spaceBackground from '../assets/space1.png';
+import sunImage from '../assets/sun.png';
+
+// Scale background star distances independently of the sun.
+const STAR_DISTANCE_SCALE = 2;
+const SUN_DISTANCE_SCALE = 1;
+const SUN_DISTANCE = 3 * SUN_DISTANCE_SCALE;
 
 interface BackgroundStar {
   id: number;
@@ -103,13 +109,32 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
       {/* Atmospheric Vignette */}
       <div className="absolute inset-0 space-vignette pointer-events-none" />
 
+      {/* Centered sun with the same depth-based parallax as the nearest stars. */}
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 pointer-events-none"
+        style={{
+          width: `clamp(${300 / SUN_DISTANCE_SCALE}px, ${46 / SUN_DISTANCE_SCALE}vw, ${660 / SUN_DISTANCE_SCALE}px)`,
+          transform: `translate(calc(-70% + ${mouseOffset.x * (120 / SUN_DISTANCE)}px), calc(-50% + ${mouseOffset.y * (120 / SUN_DISTANCE)}px))`,
+          transition: 'transform 180ms cubic-bezier(0.16, 1, 0.3, 1)',
+          mixBlendMode: 'screen',
+        }}
+      >
+        <img
+          src={sunImage}
+          alt=""
+          draggable={false}
+          className="block w-full h-auto"
+        />
+      </div>
+
       {/* 40 stars at distinct depths; nearby stars travel farther with cursor parallax. */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {BACKGROUND_STARS.map((star) => {
-          const parallaxStrength = 120 / star.distance;
+          const parallaxStrength = 120 / (star.distance * STAR_DISTANCE_SCALE);
           const offsetX = mouseOffset.x * parallaxStrength;
           const offsetY = mouseOffset.y * parallaxStrength;
-          const size = 0.8 + (20 - star.distance) * 0.11;
+          const size = (0.8 + (20 - star.distance) * 0.11) / STAR_DISTANCE_SCALE;
           const opacity = 0.35 + (20 - star.distance) * 0.028;
 
           return (
