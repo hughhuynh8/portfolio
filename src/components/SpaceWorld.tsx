@@ -6,7 +6,7 @@ import sunImage from '../assets/sun.png';
 
 // Scale background star distances independently of the sun.
 const STAR_DISTANCE_SCALE = 2;
-const SUN_DISTANCE_SCALE = 1;
+const SUN_DISTANCE_SCALE = 1.5;
 const SUN_DISTANCE = 3 * SUN_DISTANCE_SCALE;
 
 interface BackgroundStar {
