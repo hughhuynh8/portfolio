@@ -49,14 +49,25 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
   }
 
   return (
-    <button
-      type="button"
+    <a
+      href={`/${logo.id}`}
       style={transformStyle}
       className="absolute cursor-pointer select-none border-0 bg-transparent p-0 transition-shadow group flex flex-col items-center justify-center z-10"
       aria-label={`View ${logo.client} case study`}
-      disabled={sceneState !== 'idle'}
-      onClick={() => {
-        if (sceneState === 'idle') {
+      aria-disabled={sceneState !== 'idle'}
+      tabIndex={sceneState === 'idle' ? 0 : -1}
+      onClick={(event) => {
+        if (sceneState !== 'idle') {
+          event.preventDefault();
+          return;
+        }
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        onClick(logo);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === ' ' && sceneState === 'idle') {
+          event.preventDefault();
           onClick(logo);
         }
       }}
@@ -91,6 +102,6 @@ export const SpaceLogo: React.FC<SpaceLogoProps> = ({
           draggable={false}
         />
       </div>
-    </button>
+    </a>
   );
 };

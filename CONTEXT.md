@@ -4,7 +4,7 @@
 
 - Vite + React 18 + TypeScript + Tailwind CSS portfolio with a space-scene landing experience.
 - Start development with `npm run dev`; validate production output with `npm run build`.
-- `npm run react-devtools` launches the standalone React component inspector.
+- Use the React DevTools browser extension for component inspection. The standalone Electron-based package was removed because of vulnerable dependencies.
 
 ## Routing
 
@@ -39,7 +39,7 @@
 
 ## Accessibility
 
-- Interactive space logos are native buttons; case-study sector navigation uses links.
+- Interactive space logos are native links with crawlable destinations; ordinary activation plays the warp animation, while modified clicks retain browser behavior. Case-study sector navigation uses links.
 - Global visible-focus, skip-link, and reduced-motion styles live in `src/styles/global.css`.
 - Decorative canvas content is hidden from screen readers; project images have descriptive alt text.
 

@@ -57,7 +57,6 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
 
   return (
     <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#000000]">
-      <h1 className="sr-only">Hugh Huynh portfolio</h1>
       {/* 3D Space World with 8 Glowing Logos */}
       <SpaceWorld
         sceneState={sceneState}
@@ -83,14 +82,14 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
           <header className="fixed top-0 left-0 right-0 p-6 flex justify-between items-center pointer-events-none z-30">
             <div className="flex items-center gap-3">
               <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
-              <div className="flex flex-col">
+              <h1 className="flex flex-col uppercase">
                 <Link to="/about" className="pointer-events-auto font-orbitron text-lg font-bold tracking-widest text-slate-200 hover:text-cyan-300">
-                  HUGH HUYNH
-                </Link>
+                  Hugh Huynh
+                </Link>{' '}
                 <span className="text-sm text-cyan-400/80 font-mono tracking-wider">
-                  PORTFOLIO
+                  portfolio
                 </span>
-              </div>
+              </h1>
             </div>
 
             <div className="flex items-center gap-4 text-sm font-mono text-slate-400 bg-slate-900/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-inner">

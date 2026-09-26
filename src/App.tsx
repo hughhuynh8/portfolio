@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useParams } from 'react-router-do
 import { SpaceLogo, SPACE_LOGOS } from './config/navigation';
 import { SpaceScene, SceneState } from './components/SpaceScene';
 import { PageContainer } from './components/PageContainer';
+import { PageMetadata } from './components/PageMetadata';
 
 const SpaceRoute: React.FC = () => {
   const navigate = useNavigate();
@@ -70,12 +71,15 @@ const CaseStudyRoute: React.FC = () => {
 };
 
 export const App: React.FC = () => (
+  <>
+  <PageMetadata />
   <Routes>
     <Route path="/" element={<SpaceRoute />} />
     <Route path="/about" element={<AboutRoute />} />
     <Route path="/:logoId" element={<CaseStudyRoute />} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
+  </>
 );
 
 export default App;
