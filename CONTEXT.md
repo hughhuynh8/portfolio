@@ -45,5 +45,6 @@
 
 ## Notes
 
-- BrowserRouter requires the production host to serve `index.html` for unknown application paths so direct case-study URLs resolve correctly.
+- Production builds pre-render each public route through `scripts/build.mjs`; serve its own directory index, not a universal homepage rewrite. Unknown paths should return HTTP 404.
+- `src/config/metadata.ts` owns the canonical origin and shared metadata. Each build also generates sitemap.xml and robots.txt.
 - Do not reintroduce manual `window.history`, `pushState`, or `popstate` handling; use React Router components/hooks instead.

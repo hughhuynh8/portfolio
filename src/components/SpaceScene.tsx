@@ -87,7 +87,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
                   Hugh Huynh
                 </Link>{' '}
                 <span className="text-sm text-cyan-400/80 font-mono tracking-wider">
-                  portfolio
+                  Software Engineer &amp; Tech Lead
                 </span>
               </h1>
             </div>

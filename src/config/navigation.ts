@@ -52,7 +52,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     headline: 'high-traffic travel booking platform',
     summary: 'Developed and maintained the Qantas and Jetstar Holidays application, providing the ultimate travel booking experience to millions of visitors per day and resolving production issues.',
     techStack: ['Next.js', 'React', 'Buildkite', 'Sanity', 'Contentful', 'AWS', 'Splunk', 'Datadog', 'Sentry', 'Jest', 'Cypress'],
-    achievements: ['Applied a Content Security Policy, protecting the application from hackers (XSS, clickjacking and data injections).', 'Implemented increased range of holiday packages (from hundreds of packages to thousands for certain destinations).', 'Fixed a critical issue (P1) during Jetstar’s largest sale of the year, which generated $6M in revenue.'],
+    achievements: ['Integrated Optimizely to refine the package page, increasing conversion rates by 15%.', 'Applied a Content Security Policy, protecting the application from hackers (XSS, clickjacking and data injections).', 'Implemented increased range of holiday packages (from hundreds of packages to thousands for certain destinations).', 'Fixed a critical issue (P1) during Jetstar’s largest sale of the year, which generated $6M in revenue.'],
     metrics: [{ label: 'Tenure', value: '3+ yrs' }, { label: 'Daily audience', value: '290k' }, { label: 'yearly revenue', value: '$79.6M' }],
   },
   {
@@ -72,8 +72,8 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     headline: 'Australian furniture retailer',
     summary: 'Led development and updates for Shopify e-commerce stores, managing a team of four while delivering performance and SEO focused retail solutions.',
     techStack: ['Shopify', 'React', 'Gatsby', 'Netlify', 'Tailwind CSS', 'Google Cloud', 'GraphQL'],
-    achievements: ['Led a team of four developers, and liaised with six different clients.', 'Integrated Elasticsearch functionality for fast, scalable and simple product search.', 'Delivered SEO and performance-optimised Shopify solution.'],
-    metrics: [{ label: 'Role', value: 'Tech Lead' }, { label: 'Team managed', value: '4' }, { label: 'Tenure', value: '5 mos' }],
+    achievements: ['Led a team of four developers, and liaised with six different clients (Remarkable, Tony Bianco, Fine Day, All Kinds, Pure Baby and Commonry).', 'Integrated Elasticsearch functionality for fast, scalable and simple product search.', 'Delivered SEO and performance-optimised Shopify solution.'],
+    metrics: [{ label: 'Role', value: 'Tech Lead' }, { label: 'Team size managed', value: '4' }, { label: 'Tenure', value: '5 mos' }],
   },
   {
     id: 'spotlight',
@@ -92,7 +92,7 @@ export const SPACE_LOGOS: SpaceLogo[] = [
     headline: 'Craft and homewares commerce at national retail scale',
     summary: 'Developed a craft and homewares ecommerce solution and supported its launch across more than one hundred stores and ten million products.',
     techStack: ['SAP Hybris', 'HTML', 'Sass', 'Bootstrap 4', 'Angular 6', 'Grunt'],
-    achievements: [' Unified online stores, mobile apps and in-store touchpoints so customers get a seamless experience.', 'Developed customisable site wide banner for marketing team sales and promotions.', 'Supported a rollout spanning 100+ stores and 10M products.'],
+    achievements: ['Collaborated with cross-functional teams to integrate online stores, mobile apps, and in-store touchpoints, delivering a seamless customer experience across all channels.', 'Developed customisable site wide banner for marketing team sales and promotions.', 'Supported a rollout spanning 100+ stores and 10M products.'],
     metrics: [{ label: 'Tenure', value: '4+ yrs' }, { label: 'Stores', value: '100+' }, { label: 'Products', value: '10M' }],
   },
   {
