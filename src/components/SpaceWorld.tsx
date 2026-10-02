@@ -78,8 +78,13 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
 
   useEffect(() => {
     if (sceneState !== 'idle') return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const resetMotion = () => {
+      if (reducedMotion.matches) setMouseOffset({ x: 0, y: 0 });
+    };
 
     const handleMouseMove = (event: MouseEvent) => {
+      if (reducedMotion.matches) return;
       setMouseOffset({
         x: (event.clientX / window.innerWidth - 0.5) * 2,
         y: (event.clientY / window.innerHeight - 0.5) * 2,
@@ -87,7 +92,11 @@ export const SpaceWorld: React.FC<SpaceWorldProps> = ({
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    reducedMotion.addEventListener('change', resetMotion);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      reducedMotion.removeEventListener('change', resetMotion);
+    };
   }, [sceneState]);
 
   if (sceneState === 'flash' || sceneState === 'page') {

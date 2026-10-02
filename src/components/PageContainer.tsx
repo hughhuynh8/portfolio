@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { SPACE_LOGOS } from '../config/navigation';
 import { About } from '../pages/About';
+import { MobileSectorsMenu } from './MobileSectorsMenu';
 import { preloadImage } from '../utils/preloadImage';
 import {
   ArrowLeft,
@@ -30,34 +31,30 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   // }, [selectedLogo]);
 
   return (
-    <div className="fixed inset-0 z-40 overflow-y-auto bg-[#000000] text-slate-200 animate-fade-in select-text">
+    <div className="fixed inset-0 z-40 overflow-y-auto bg-[#000000] text-slate-200 select-text">
       <a className="skip-link" href="#main-content">Skip to main content</a>
       {/* Top Navigation HUD */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#000000]/80 border-b border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-          {/* Back to 3D Space Button */}
-          <button
-            onClick={onReturnToSpace}
-            className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-semibold tracking-wider transition-all duration-200 hover:scale-105 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>RETURN <span className="hidden sm:inline">TO DEEP SPACE</span></span>
-          </button>
-
+          <MobileSectorsMenu />
           <NavLink
             to="/about"
-            className="ml-auto px-3 py-1.5 rounded-lg text-sm font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+            className="ml-auto px-3 py-1.5 rounded-lg text-sm block sm:hidden font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
           >
             ABOUT HUGH
           </NavLink>
         </div>
 
         {/* 8 Logo Quick Jumper Bar */}
-        <nav aria-label="Case studies" className="max-w-7xl mx-auto pt-3 flex items-center gap-2 overflow-x-auto scrollbar-none">
-          <span className="text-sm font-mono text-cyan-300 whitespace-nowrap mr-1 flex items-center gap-1">
-            <Compass className="w-3 h-3 text-cyan-400" />
-            SECTORS:
-          </span>
+
+        <nav aria-label="Case studies" className="max-w-7xl mx-auto pt-3 pb-2 hidden md:flex items-center gap-2 lg:gap-4 overflow-x-auto scrollbar-none">
+          <button
+            onClick={onReturnToSpace}
+            className="hidden md:flex origin-left items-center gap-2.5 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-semibold tracking-wider transition-all duration-200 hover:scale-105 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+          >
+            <ArrowLeft className="w-4 h-6" />
+            <span>HOME</span>
+          </button>
           {SPACE_LOGOS.map((logo) => (
             <NavLink
               key={logo.id}
@@ -66,16 +63,32 @@ export const PageContainer: React.FC<PageContainerProps> = ({
               onPointerEnter={() => preloadImage(logo.heroImage)}
               onFocus={() => preloadImage(logo.heroImage)}
               onPointerDown={() => preloadImage(logo.heroImage)}
-              className={({ isActive }) => `px-2.5 py-1 rounded-md text-sm font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
+              className={({ isActive }) => `group rounded-md text-sm font-mono transition-all flex items-center gap-1.5 whitespace-nowrap ${isActive
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 shadow-[0_0_10px_rgba(56,189,248,0.8),0_0_12px_rgba(56,189,248,0.5)]'
                 : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-white/5 hover:border-white/15'
                 }`}
             >
-              <img src={logo.icon} alt="" className="w-3.5 h-3.5 object-contain" />
-              <span>{logo.label}</span>
+              <span
+                className="block w-16 h-10 lg:w-20 lg:h-14 overflow-hidden rounded p-2"
+                style={{ backgroundColor: logo.backgroundColor }}
+              >
+                <img
+                  src={logo.icon}
+                  alt=""
+                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transform-none"
+                />
+              </span>
+              {/* <span>{logo.label}</span> */}
             </NavLink>
           ))}
+          <NavLink
+            to="/about"
+            className="ml-auto px-3 py-1.5 rounded-lg text-sm font-mono tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all whitespace-nowrap"
+          >
+            ABOUT HUGH
+          </NavLink>
         </nav>
+
       </header>
 
       {/* Main Content Area */}
@@ -161,7 +174,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             </div>
 
             {/* Quantified Metrics Grid */}
-            <div className="grid grid-cols-3 gap-6 mb-6 sm:mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6 sm:mb-12">
               {selectedLogo.metrics.map((metric, idx) => (
                 <div
                   key={idx}

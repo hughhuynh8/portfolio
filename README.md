@@ -34,6 +34,7 @@ Open the local URL printed by Vite in your terminal. No environment variables or
 | `npm run build` | Run TypeScript checks and pre-render all public pages into `dist/`. |
 | `npm run preview` | Serve the production build locally after building. |
 | `npm run check:build` | Verify generated page content, metadata, assets, links, sitemap, and crawler rules. |
+| `npm run deploy` | Upload existing `dist/` contents to the configured Namecheap document root. |
 
 ## Project structure
 
@@ -57,6 +58,25 @@ Edit `src/config/navigation.ts` to update case studies, screenshots, logos, achi
 Update `src/pages/About.tsx` for biography content, and `src/styles/global.css` or `tailwind.config.js` for shared styling. Page metadata and the production origin live in `src/config/metadata.ts`. The build writes route-specific metadata into HTML; `src/components/PageMetadata.tsx` keeps it current during browser navigation.
 
 ## Deployment
+
+For Namecheap, copy `namecheap.example.json` to `namecheap.local` (ignored by Git) and enter your server hostname, cPanel username, SSH port, and the domain's absolute document root from cPanel. The destination directory must already exist. The example uses `public_html`; addon domains may have a different document root.
+
+The upload uses your installed OpenSSH `scp` client and SSH keys or an interactive password prompt. Do not store passwords in the configuration. Enable SSH access if required by your account. Namecheap shared hosting uses port `21098`; see [Namecheap's SSH instructions](https://www.namecheap.com/support/knowledgebase/article.aspx/1016/89/how-to-access-a-hosting-account-via-ssh/).
+
+Set `"identityFile": "~/.ssh/namecheap"` in `namecheap.local` to select your SSH private key. Authorize the matching public key in cPanel first. Paths beginning with `~/` resolve to your home folder; relative paths resolve from this project. SSH can use your agent or macOS Keychain to unlock the key without repeated passphrase prompts. Omit `identityFile` to use your existing SSH configuration or password authentication.
+
+For Bitwarden's desktop SSH agent, you can set `"identityAgent": "~/.bitwarden-ssh-agent.sock"` in `namecheap.local` to override the agent socket configured in SSH. Use the socket path for your Bitwarden installation and omit `identityFile` when letting the agent supply the key.
+
+```sh
+cp namecheap.example.json namecheap.local
+# Edit namecheap.local with your hosting details.
+npm run build
+npm run check:build
+npm run deploy -- --dry-run
+npm run deploy
+```
+
+This uploads the contents of `dist/`, including hidden files, directly into the document root and overwrites matching files. It does not delete other remote files. The upload command does not rebuild the site.
 
 ```sh
 npm run build

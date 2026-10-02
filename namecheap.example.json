@@ -1,0 +1,7 @@
+{
+  "host": "your-server.web-hosting.com",
+  "username": "your_cpanel_username",
+  "port": 21098,
+  "identityFile": "~/.ssh/namecheap",
+  "remotePath": "/home/your_cpanel_username/public_html"
+}

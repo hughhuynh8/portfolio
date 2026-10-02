@@ -17,10 +17,14 @@ const SpaceRoute: React.FC = () => {
   }, []);
 
   const handleSelectLogo = useCallback((logo: SpaceLogo) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      navigate(`/${logo.id}`);
+      return;
+    }
     preloadImage(logo.heroImage);
     setSelectedLogo(logo);
     setSceneState('warping');
-  }, []);
+  }, [navigate]);
 
   const handleTransitionComplete = useCallback(() => {
     if (!selectedLogo) return;

@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && node scripts/build.mjs",
     "check:build": "node scripts/check-build.mjs",
+    "deploy": "node scripts/upload-namecheap.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

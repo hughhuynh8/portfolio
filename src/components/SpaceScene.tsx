@@ -28,7 +28,8 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
   useEffect(() => {
     if (sceneState !== 'warping') {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-      setWarpProgress(0);
+      // Hold the completed zoom through impact and flash; only reset on return.
+      if (sceneState === 'idle') setWarpProgress(0);
       return;
     }
 
@@ -56,7 +57,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
   }, [sceneState, onTransitionComplete]);
 
   return (
-    <main aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#000000]">
+    <main tabIndex={-1} aria-label="Deep space portfolio" className="relative w-screen h-screen overflow-hidden bg-[#000000]">
       {/* 3D Space World with 8 Glowing Logos */}
       <SpaceWorld
         sceneState={sceneState}
@@ -92,7 +93,7 @@ export const SpaceScene: React.FC<SpaceSceneProps> = ({
               </h1>
             </div>
 
-            <div className="flex items-center gap-4 text-sm font-mono text-slate-400 bg-slate-900/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-inner">
+            <div className="hidden sm:flex items-center gap-4 text-sm font-mono text-slate-400 bg-slate-900/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-inner">
               <span className="flex items-center gap-1.5 text-cyan-300">
                 <Compass className="w-3.5 h-3.5 text-cyan-400" />
                 8 TARGETS ACQUIRED

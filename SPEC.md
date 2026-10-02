@@ -299,7 +299,6 @@ src/
 │   └── navigation.ts
 │
 ├── assets/
-│   ├── sparse_starry_sky.svg
 │   └── logos/
 │
 └── styles/

@@ -8,7 +8,7 @@ export const About: React.FC = () => {
       {/* Header */}
       <div className="border-b border-white/10 pb-6 mb-6 sm:mb-12">
         <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
-          <div className="w-full md:w-[260px] shrink-0">
+          <div className="w-full max-w-[300px] mx-auto md:mx-0 md:w-[260px] shrink-0">
             <img
               src={hughPortrait}
               alt="Hugh Huynh"
@@ -38,7 +38,7 @@ export const About: React.FC = () => {
           <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
             <Cpu className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-bold text-white mb-2">Systems Architecture</h3>
+          <h2 className="text-lg font-bold text-white mb-2">Systems Architecture</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
             Building scalable frontend foundations, micro-frontends, design systems and component ecosystems that empower multi-squad development.
           </p>
@@ -48,7 +48,7 @@ export const About: React.FC = () => {
           <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
             <Code className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-bold text-white mb-2">High-Velocity UI</h3>
+          <h2 className="text-lg font-bold text-white mb-2">High-Velocity UI</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
             Obsessive focus on Core Web Vitals, predictive search, and frictionless booking & checkout flows for millions of concurrent users.
           </p>
@@ -58,7 +58,7 @@ export const About: React.FC = () => {
           <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
             <Rocket className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-bold text-white mb-2">Creative Technology</h3>
+          <h2 className="text-lg font-bold text-white mb-2">Creative Technology</h2>
           <p className="text-sm text-slate-400 leading-relaxed">
             Bridging engineering and creative artistry with Figma, Photoshop, Illustrator and sensory motion design that captivates audiences.
           </p>
